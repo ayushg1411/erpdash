@@ -17,12 +17,9 @@ const CompanyComponent = ({page}) => {
 
 
  <>
-    {/* <div className='flex'>
+   
+    <Form initialValues={initialValues} id={page._id} />
   
-    
-    </div> */}
-    <Form initialValues={initialValues} />
-    <h1>testing success</h1>
     </>
   )
 }

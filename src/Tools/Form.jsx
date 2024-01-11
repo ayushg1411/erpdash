@@ -21,7 +21,6 @@ const validationSchema = Yup.object().shape(
     validationSchema,
     onSubmit: async (values) => {
       try {
-        // Assuming your API endpoint is 'https://api.example.com/sales'
         const response = await axios.post(`http://localhost:3002/api/user/save/${id}`, values);
         console.log('API response:', response.data);
         // Add any additional logic here, e.g., redirect, show success message, etc.
@@ -68,6 +67,9 @@ const validationSchema = Yup.object().shape(
   
            <div className="w-full bg-slate-200 mx-auto mt-1 p-1 rounded-md shadow-md">
       <form onSubmit={formik.handleSubmit} className=" form-tab-css">
+      <div className='w-full block float-end'>
+        <button className=' m-1  py-1 px-2 rounded-lg  bg-yellow-300 h-[40px]'>submit</button>
+        </div>
         {Object.keys(initialValues).map((fieldName) => (
           <div key={fieldName}  className="div-label-field">
             <label className="label-css">{fieldName}</label>
@@ -109,9 +111,7 @@ const validationSchema = Yup.object().shape(
           </div>
         ))}
 
-        <div className=''>
-        <button>submit</button>
-        </div>
+       
       </form>
     </div>
 
