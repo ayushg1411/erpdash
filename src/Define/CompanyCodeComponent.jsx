@@ -1,8 +1,8 @@
 import React from 'react'
 import Form from '../Tools/Form'
 
-const CompanyComponent = ({page}) => {
-    const initialValues = {
+const CompanyCodeComponent = ({page}) => {
+  const initialValues = {
         "Company": '',
         "CompanyName": '',
         "Street": '',
@@ -11,10 +11,11 @@ const CompanyComponent = ({page}) => {
         "City": '', // Updated to use a select box
         "SelectCountry": '',
         "Currency": 'inr',
-      };
-   
+        "Language":'',
+    
+  };
   return (
-<>
+    <>
     <div className='flex'>
      
     
@@ -24,4 +25,4 @@ const CompanyComponent = ({page}) => {
   )
 }
 
-export default CompanyComponent
+export default CompanyCodeComponent

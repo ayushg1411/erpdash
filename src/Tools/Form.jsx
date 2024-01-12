@@ -3,9 +3,8 @@ import { useFormik } from 'formik';
 import axios from 'axios';
 import * as Yup from 'yup';
 
-const Form = ({initialValues, id}) => {
-
-const validationSchema = Yup.object().shape(
+const Form = ({ initialValues, id }) => {
+  const validationSchema = Yup.object().shape(
     Object.keys(initialValues).reduce((acc, key) => {
       return {
         ...acc,
@@ -21,7 +20,7 @@ const validationSchema = Yup.object().shape(
     validationSchema,
     onSubmit: async (values) => {
       try {
-        const response = await axios.post(`http://localhost:3002/api/user/save/${id}`, values);
+        const response = await axios.post(`https://sdaf-ijn7.onrender.com/api/user/save/${id}`, values);
         console.log('API response:', response.data);
         // Add any additional logic here, e.g., redirect, show success message, etc.
         console.log(values);
@@ -31,10 +30,7 @@ const validationSchema = Yup.object().shape(
         // Handle errors, e.g., show error message to the user
       }
     },
-  
-    
   });
-
 
   const handleKeyPress = (e) => {
     if (e.key === 'Enter') {
@@ -50,30 +46,37 @@ const validationSchema = Yup.object().shape(
     }
 
     if (e.key === 'ArrowUp') {
-        e.preventDefault();
-        const form = e.target.form;
-        const index = Array.from(form).indexOf(e.target);
-        const nextField = form.elements[index - 1];
-  
-        // Check if the current field is filled before moving to the next one
-        if (e.target.value.trim() !== '') {
-          nextField && nextField.focus();
-        }
+      e.preventDefault();
+      const form = e.target.form;
+      const index = Array.from(form).indexOf(e.target);
+      const nextField = form.elements[index - 1];
+
+      // Check if the current field is filled before moving to the next one
+      if (e.target.value.trim() !== '') {
+        nextField && nextField.focus();
       }
+    }
   };
 
   return (
-   
-  
-           <div className="w-full bg-slate-200 mx-auto mt-1 p-1 rounded-md shadow-md">
-      <form onSubmit={formik.handleSubmit} className=" form-tab-css">
-      <div className='w-full block float-end'>
-        <button className=' m-1  py-1 px-2 rounded-lg  bg-yellow-300 h-[40px]'>submit</button>
+    <div className="w-full bg-slate-200 mx-auto mt-1 p-1 rounded-md shadow-md">
+      <form onSubmit={formik.handleSubmit} className="form-tab-css">
+        <div className="w-full block float-end">
+          <button
+            className="m-1 py-1 px-2 rounded-lg bg-slate-400 h-[40px] hover:bg-slate-500 focus:outline-none focus:ring focus:border-blue-300"
+            onClick={() => {
+              // Add your custom click logic here
+              console.log('Save button clicked!');
+              // ... (add your custom logic)
+            }}
+          >
+            SAVE
+          </button>
         </div>
         {Object.keys(initialValues).map((fieldName) => (
-          <div key={fieldName}  className="div-label-field">
+          <div key={fieldName} className="div-label-field">
             <label className="label-css">{fieldName}</label>
-            {fieldName === 'selectCountry' ? ( // Render select box for 'city' field
+            {fieldName === 'selectCountry' ? (
               <select
                 name={fieldName}
                 value={formik.values[fieldName]}
@@ -82,7 +85,7 @@ const validationSchema = Yup.object().shape(
                 onKeyDown={handleKeyPress}
                 onKeyPress={handleKeyPress}
                 className={`input-tag-css ${
-                  formik.touched[fieldName] && formik.errors[fieldName] ? ' custom-border' : ''
+                  formik.touched[fieldName] && formik.errors[fieldName] ? 'custom-border' : ''
                 }`}
               >
                 <option value="" label="Select a country" />
@@ -92,7 +95,7 @@ const validationSchema = Yup.object().shape(
                   </option>
                 ))}
               </select>
-            ) : ( // Render regular input for other fields
+            ) : (
               <input
                 type="text"
                 name={fieldName}
@@ -101,24 +104,15 @@ const validationSchema = Yup.object().shape(
                 onBlur={formik.handleBlur}
                 onKeyDown={handleKeyPress}
                 onKeyPress={handleKeyPress}
-                className={` input-tag-css
-                  ${
-                    formik.touched[fieldName] && formik.errors[fieldName] ?   'custom-border' : ''
-                  }`}
+                className={`input-tag-css ${
+                  formik.touched[fieldName] && formik.errors[fieldName] ? 'custom-border' : ''
+                }`}
               />
             )}
-          
           </div>
         ))}
-
-       
       </form>
     </div>
-
-
-  
-
-   
   );
 };
 

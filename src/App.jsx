@@ -18,7 +18,7 @@ useEffect(() => {
     try {
       if (!dataFetched) { // Check if data has not been fetched yet
         const response = await axios.get(
-          `http://localhost:3002/api/user/getSides/get`
+          `https://sdaf-ijn7.onrender.com/api/user/getSides/get`
         );
         setCheckData(response.data.side);
         console.log(response.data.side);

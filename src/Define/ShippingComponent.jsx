@@ -32,7 +32,7 @@ const ShippingComponent = ({page}) => {
      
     
     </div>
-    <Form initialValues={initialValues}  />
+    <Form initialValues={initialValues} id={page._id} />
     </>
   )
 }

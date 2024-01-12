@@ -19,7 +19,7 @@ const CreditControlComponent = ({page}) => {
      
     
     </div>
-    <Form initialValues={initialValues}  />
+    <Form initialValues={initialValues} id={page._id} />
     </>
   )
 }

@@ -1,12 +1,11 @@
 import React from 'react'
 import Form from '../Tools/Form'
 
-const SalesOfficeComponent = ({page}) => {
+const FunctionalComponent = ({page}) => {
   const initialValues = {
-    "Sales": '',
-    "Postal Code": '',
-    "Created By": '',
-    "Description": '', // Corrected field name to match initialValues
+    "Functional Area": '',
+        "Name": '',
+    
   };
   return (
     <>
@@ -19,4 +18,4 @@ const SalesOfficeComponent = ({page}) => {
   )
 }
 
-export default SalesOfficeComponent
+export default FunctionalComponent

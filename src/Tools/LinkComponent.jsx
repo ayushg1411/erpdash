@@ -10,7 +10,7 @@ const LinkComponent = () => {
   const fetchData = async () => {
     try {
       const response = await axios.get(
-        `http://localhost:3002/api/user/define/659fad8fa19f785b6b0bd347`
+        `https://sdaf-ijn7.onrender.com/api/user/define/659fad8fa19f785b6b0bd353`
       ); // Replace 'your-api-endpoint' with the actual API endpoint
       setFormData(response.data);
       // Set the form data in the state variable
@@ -21,7 +21,7 @@ const LinkComponent = () => {
   const fetchData2 = async () => {
     try {
       const response = await axios.get(
-        `http://localhost:3002/api/user/define/659fad90a19f785b6b0bd35f`
+        `https://sdaf-ijn7.onrender.com/api/user/define/659fad90a19f785b6b0bd35f`
       ); // Replace 'your-api-endpoint' with the actual API endpoint
       setForm2Data(response.data);
       // Set the form data in the state variable

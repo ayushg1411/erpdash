@@ -1,12 +1,12 @@
 import React from 'react'
 import Form from '../Tools/Form'
 
-const DivisionComponent = ({page}) => {
-  const initialValues = {
-    "Division": '',
-    "Name": '',
-    
-  };
+const LoadingComponent = ({page}) => {
+    const initialValues = {
+      "Loading Point": '',
+      "Responsibility": '',
+      "Description": '',
+      };
   return (
     <>
     <div className='flex'>
@@ -18,4 +18,4 @@ const DivisionComponent = ({page}) => {
   )
 }
 
-export default DivisionComponent
+export default LoadingComponent

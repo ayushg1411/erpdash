@@ -15,7 +15,7 @@ const StorageComponent = ({page}) => {
      
     
     </div>
-    <Form initialValues={initialValues} id ={page._id}  />
+    <Form initialValues={initialValues} id={page._id} />
     </>
   )
 }
