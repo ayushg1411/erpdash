@@ -37,10 +37,13 @@ import StorageComponent from "./Define/StorageComponent";
 import PurchasingOrgComponent from "./Define/PurchasingOrgComponent";
 import ShippingComponent from "./Define/ShippingComponent";
 import LoadingComponent from "./Define/LoadingComponent";
+import DistribuationComponent from "./Define/DistribuationComponent";
+
 
 import ControlBar from "./Tools/ControlBar";
 
 import AssignComponent from "./Assign/AssignComponent";
+// import Division_to_SalesOrg from "./Assign/Division_SalesOrg";
 
 // Import other components as needed
 
@@ -50,52 +53,52 @@ const PageComponent = ({ page }) => {
       case page.tcode >= "GS10017" && page.tcode <= "GS10034":
         return <AssignComponent page={page} />;
 
-      case page.name == "COMPANY":
+      case page.name == "Company":
         return <CompanyComponent page={page} />;
 
-      case page.name == "CREDIT CONTROL AREA":
+      case page.name == "Credit Control Area":
         return <CreditControlComponent page={page} />;
 
-      case page.name == "COMPANY CODE":
+      case page.name == "Company Code":
         return <CompanyCodeComponent page={page} />;
 
-      case page.name == "BUSINESS AREA":
+      case page.name == "Business Area":
         return <BusinessComponent page={page} />;
 
-      case page.name == "FUNCTIONAL AREA":
+      case page.name == "Functional Area":
         return <FunctionalComponent page={page} />;
 
-      case page.name == "PROFIT CENTER":
+      case page.name == "Profit Center":
         return <ProfitCenterComponent page={page} />;
 
-      case page.name == "PLANT":
+      case page.name == "Plant":
         return <PlantComponent page={page} />;
 
-      case page.name == "DIVISION":
+      case page.name == "Division":
         return <DivisionComponent page={page} />;
 
-      case page.name == "SALES ORGANIZATION":
+      case page.name == "Sales Organization":
         return <SalesOrgComponent page={page} />;
 
-      case page.name == "DISTRIBUTIONAL CHANNEL":
-        return <Component page={page} />;
+      case page.name == "Distribuation Channel":
+        return <DistribuationComponent page={page} />;
 
-      case page.name == "SALES OFFICE":
+      case page.name == "Sales Office":
         return <SalesOfficeComponent page={page} />;
 
-      case page.name == "SALES GROUP":
+      case page.name == "Sales Group":
         return <SalesGrpComponent page={page} />;
 
-      case page.name == "STORAGE LOCATION":
+      case page.name == "Storage Location":
         return <StorageComponent page={page} />;
 
-      case page.name == "PURCHASING ORG":
+      case page.name == "Purchasing Organization":
         return <PurchasingOrgComponent page={page} />;
 
-      case page.name == "SHIPPING POINT":
+      case page.name == "Shipping Point":
         return <ShippingComponent page={page} />;
 
-      case page.name == "LOADING POINT":
+      case page.name == "Loading Point":
         return <LoadingComponent page={page} />;
 
       default:
@@ -105,7 +108,7 @@ const PageComponent = ({ page }) => {
 
   return (
     <div>
-      <ControlBar controls={page} />
+      {/* <ControlBar controls={page} /> */}
       {renderPageContent()}
     </div>
   );

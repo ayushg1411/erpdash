@@ -9,7 +9,7 @@ const Table = ({ jsonData }) => {
   const headers = Object.keys(jsonData[0]);
 
   return (
-    <table className="  mt-2 table-auto w-8 border-collapse border border-green-800">
+    <table className="  mt-2 table-auto w-8 border-collapse border border-green-800 rounded-md">
       <thead>
         <tr>
           {headers.map((header) => (
@@ -31,3 +31,4 @@ const Table = ({ jsonData }) => {
 };
 
 export default Table;
+  
