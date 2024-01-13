@@ -35,7 +35,7 @@ const ControlBar = ({ controls, getV }) => {
   const renderedButtons = renderButtons(controls);
 
   return (
-    <>
+    <div>
       <div className="control-bar">
         <p className="page-name">
           {controls.name}
@@ -58,7 +58,7 @@ const ControlBar = ({ controls, getV }) => {
         ) : null}
         <div className="button-container">{renderedButtons}</div>
       </div>
-    </>
+    </div>
   );
 };
 
@@ -73,7 +73,7 @@ const CompanyCodeComponent = ({ page }) => {
     Street: "",
     Pobox: "",
     PostalCode: "",
-    City: "", // Updated to use a select box
+    City: "", 
     SelectCountry: "",
     Currency: "inr",
     Language: "",

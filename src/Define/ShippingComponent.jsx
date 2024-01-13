@@ -18,7 +18,7 @@ const renderButtons = (data, tcodes) => {
     if (typeof value === "boolean" && value) {
       return (
         <button
-          className=" m-1 rounded-lg  bg-gray-300 h-[40px]"
+          className=" button"
           key={key}
           
           onClick={fetchapi}
@@ -49,11 +49,11 @@ const ControlBar = ({ controls, getV }) => {
   const renderedButtons = renderButtons(controls, controls.tcode);
 
   return (
-    <>
-      <div className="bg-gray-500 w-full min-w-[1500px] flex justify-between h-16 p-2">
-        <p className="text-3xl md:text-xl sm:text-xs xl:text-3xl mx-2 pt-2 text-white font-bold">
+    <div>
+      <div className="control-bar">
+        <p className="page-name">
           {controls.name}
-          <span className="text-2xl md:text-xl  xl:text-3xl sm:text-base mx-2 pt-2 text-black font-bold">
+          <span className="page-tcode">
             {" "}
             - {controls.tcode}
           </span>
@@ -61,12 +61,13 @@ const ControlBar = ({ controls, getV }) => {
         {
         
         (state!=null)? ( 
-          <select 
-          className='bg-gray-100 p-2  rounded-md'
+         <div className="py-2">
+           <select 
+          className='select'
           onChange={(e) => handleSelectChange(e)}
             
           >
-          <option   className="bg-gray-100 p-2 rounded-md" value="">{Object.keys(state)[14]}</option>
+          <option   className="option" value="">{Object.keys(state)[14]}</option>
           {state['Shipping'].data &&
             state.Shipping.data.map((formItem, index) => (
               <option key={index} value={formItem.form[index]}>
@@ -75,14 +76,15 @@ const ControlBar = ({ controls, getV }) => {
               </option>
             ))}
         </select>
+         </div>
          ) : null
        }
         
 
 {/* <button onClick={e=>dispatch(fetchCompanies())}>click</button> */}
-        <div className="flex flex-col sm:flex-row pt-2">{renderedButtons}</div>
+        <div className="button-container">{renderedButtons}</div>
       </div>
-    </>
+    </div>
   );
 };
 
@@ -120,11 +122,11 @@ const ShippingComponent = ({page}) => {
     "Pick Confirmation": '',
   };
   return (
-<>
+<div className='define-container'>
 <ControlBar getV={getV} controls={page} /> 
    {/* { (v)?<h1>{v}</h1>: null} */}
     <Form initialValues={initialValues} id={page._id} />
-    </>
+    </div>
   )
 }
 

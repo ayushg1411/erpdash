@@ -53,9 +53,9 @@ const ControlBar = ({ controls, getV }) => {
   return (
     <div>
       <div className="control-bar">
-        <p className="text-3xl md:text-xl sm:text-xs xl:text-3xl mx-2 pt-2 text-white font-bold">
+        <p className="page-name">
           {controls.name}
-          <span className="text-2xl md:text-xl  xl:text-3xl sm:text-base mx-2 pt-2 text-black font-bold">
+          <span className="page-tcode">
             {" "}
             - {controls.tcode}
           </span>
@@ -69,7 +69,7 @@ const ControlBar = ({ controls, getV }) => {
           onChange={(e) => handleSelectChange(e)}
             
           >
-          <option   className="bg-gray-100 p-2 rounded-md" value="">{Object.keys(state)[1]}</option>
+          <option   className="option" value="">{Object.keys(state)[1]}</option>
           {state.CreditControl.data &&
             state.CreditControl.data.map((formItem, index) => (
               <option key={index} value={index}>
@@ -84,7 +84,7 @@ const ControlBar = ({ controls, getV }) => {
         
 
 {/* <button onClick={e=>dispatch(fetchCompanies())}>click</button> */}
-        <div className="flex flex-col sm:flex-row pt-2">{renderedButtons}</div>
+        <div className="button-container">{renderedButtons}</div>
       </div>
     </div>
   );
