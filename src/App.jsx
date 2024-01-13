@@ -21,7 +21,7 @@ useEffect(() => {
           `https://sdaf-ijn7.onrender.com/api/user/getSides/get`
         );
         setCheckData(response.data.side);
-        console.log(response.data.side);
+        console.log(response)
         setDataFetched(true); // Set dataFetched to true after successful fetch
       }
     } catch (error) {

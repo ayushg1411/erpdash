@@ -2,9 +2,10 @@ import React, { useState, useEffect } from "react";
 import Table from "./Table";
 import axios from "axios";
 
-const LinkComponent = () => {
-  const [formData, setFormData] = useState([]);
-  const [form2Data, setForm2Data] = useState([]);
+const LinkComponent = ({formData,form2Data}) => {
+  console.log( "dsfffffffffffffff" ,formData)
+  // const [formData, setFormData] = useState([]);
+  // const [form2Data, setForm2Data] = useState([]);
 
   // Define a function to fetch data from the API using Axios
   const fetchData = async () => {
@@ -31,10 +32,9 @@ const LinkComponent = () => {
   };
 
 
-  useEffect(() => {
-    fetchData();
-    fetchData2();
-  }, []); // The empty dependency array ensures that this effect runs only once when the component mounts
+  // useEffect(() => {
+  //   // fetchData();
+  // }, []); // The empty dependency array ensures that this effect runs only once when the component mounts
 
 
   const [selectedOptions, setSelectedOptions] = useState({});
@@ -69,25 +69,40 @@ const LinkComponent = () => {
 
   return (
     <>
-      <div className="px-4">
-        <label htmlFor="selectBox1" className="px-4 bg-gray-200 m-4 h-[32px]">
-          company
-        </label>
-        <select
-          id="selectBox1"
-          onChange={(e) => handleSelectChange(e, "option1")}
-          className="p-2 bg-gray-200"
-          value={selectedOptions.option1}
-        >
-          <option value="">Select...</option>
-          {formData.map((option) => (
-            <option key={option.form.company} value={option.form.company}>
-              {option.form.company} {option.form.companyName}
-            </option>
-          ))}
-        </select>
+      <div className="">
 
-        <label htmlFor="selectBox2" className="px-4 bg-gray-200 m-4 h-[32px]">
+        <div className="flex w-full justify-evenly p-4 bg-sky-100">
+    
+       {
+  
+  (form2Data)? 
+ <div> <label htmlFor="selectBox1" className="bg-gray-100 p-2  mx-2 rounded-md">
+ company
+</label> <select
+id="selectbox2"
+    onChange={(e) => handleSelectChange(e, "option2")}
+  className="bg-gray-100 p-2 rounded-md"
+    value={selectedOptions.option2}
+>
+ <option value="">Select...</option>
+ {form2Data.map((option) => (
+   <option key={option.form.Name} value={option.form.SalesOrganization}>
+     {option.form.SalesOrganization}
+   </option>
+ ))}
+</select>
+  </div> : null
+ }
+  <button className="px-4 bg-yellow-300 p-1" onClick={handleAddData}>
+          Add Data
+        </button>
+        </div>
+     
+    
+
+
+
+        {/* <label htmlFor="selectBox2" className="bg-gray-100 p-2 rounded-md">
           sales org
         </label>
         <select
@@ -105,11 +120,9 @@ const LinkComponent = () => {
               {option.form.SalesOrganization}
             </option>
           ))}
-        </select>
+        </select> */}
 
-        <button className="px-4 bg-yellow-300 p-1" onClick={handleAddData}>
-          Add Data
-        </button>
+       
       </div>
 
       <div className="mx-32">

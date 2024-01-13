@@ -1,25 +1,4 @@
-// // PageComponent.jsx
-// import React from 'react';
 
-// const PageComponent = ({ page }) => {
-//     console.log(page);
-//   return (
-//     <div className='bg-gray-300'>
-//       <h1 className='text-4xl m-1'>{page.name}</h1>
-//       <p  className='text-4xl m-1'>ID: {page._id}</p>
-//       <p  className='text-4xl m-1'>TCode: {page.create}</p>
-//       <p  className='text-4xl m-1'>Create :{
-//         page.create==true? (<h1>yes</h1>): ( <h1>no</h1> )
-//      }
-//       </p>
-//       {/* Add other relevant information */}
-//     </div>
-//   );
-// };
-
-// export default PageComponent;
-
-// PageComponent.jsx
 import React from "react";
 
 import CompanyComponent from "./Define/CompanyComponent";
@@ -50,10 +29,10 @@ const PageComponent = ({ page }) => {
       case page.tcode >= "GS10017" && page.tcode <= "GS10034":
         return <AssignComponent page={page} />;
 
-      case page.name == "COMPANY":
+      case page.name == "Company":
         return <CompanyComponent page={page} />;
 
-      case page.name == "CREDIT CONTROL AREA":
+      case page.name == "Credit Control Area":
         return <CreditControlComponent page={page} />;
 
       case page.name == "COMPANY CODE":
@@ -68,13 +47,13 @@ const PageComponent = ({ page }) => {
       case page.name == "PROFIT CENTER":
         return <ProfitCenterComponent page={page} />;
 
-      case page.name == "PLANT":
+      case page.name == "Plant":
         return <PlantComponent page={page} />;
 
       case page.name == "DIVISION":
         return <DivisionComponent page={page} />;
 
-      case page.name == "SALES ORGANIZATION":
+      case page.name == "Sales Organization":
         return <SalesOrgComponent page={page} />;
 
       case page.name == "DISTRIBUTIONAL CHANNEL":
@@ -105,7 +84,7 @@ const PageComponent = ({ page }) => {
 
   return (
     <div>
-      <ControlBar controls={page} />
+      {/* <ControlBar controls={page} /> */}
       {renderPageContent()}
     </div>
   );
