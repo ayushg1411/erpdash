@@ -11,9 +11,18 @@ const Sidebar = ({ data }) => {
       [sectionId]: !prev[sectionId],
     }));
   };
+  const [val, sval]= useState();
+const handleme=(e)=>{
+  const vals=e.target.value
+  sval(vals);
+  console.log(val)
+}
 
   return (
-    <div className="bg-gray-400 min-h-screen  top-0 p-4">
+    <div className="bg-gray-400 min-h-screen  top-0 p-4 overflow-y-auto custom-scrollbar">
+        <input type="text" className='bg-gray-100 rounded-md w-[260px] fixed'
+         onChange={e=>handleme(e)}
+        />
       {data.map((section) => (
         <div key={section._id}>
           <div
@@ -37,7 +46,7 @@ const Sidebar = ({ data }) => {
                         : ''
                     }`}
                   >
-                    <h1 className="text-xs">{page.name}</h1>
+                    <h1 className="text-xs font-semibold">{page.name}</h1>
                   </Link>
                 </li>
               ))}

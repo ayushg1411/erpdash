@@ -31,23 +31,25 @@ useEffect(() => {
 
   fetchCheckData();
 }, [dataFetched]); 
+
+
   return (
     <Router>
-      <div className="flex">
-      <div  className='min-w-[300px]  max-w-[340px] sm:w-1/2 md:w-full lg:w-full xl:w-1/1'>
-      <Sidebar data={data} />
-      </div>
-        <div className="w-auto ">
+     <div className="flex ">
+        <div className='min-w-[300px] max-w-[340px] sm:w-1/2 md:w-full lg:w-full xl:w-1/1 fixed h-screen overflow-y-auto '>
+      
+
+          <Sidebar data={data} />
+        </div>
+        <div className="flex-1 overflow-y-auto ml-[330px]  ">
           <Routes>
             {data.map((section) =>
               section.checks.map((page) => (
                 <Route
                   key={page._id}
                   path={`/${section.name.toLowerCase()}/${page.tcode}`}
-                  element ={<PageComponent page={page}/>}
-                  
+                  element={<PageComponent page={page}  />}
                 />
-                
               ))
             )}
           </Routes>

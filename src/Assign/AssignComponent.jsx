@@ -182,11 +182,11 @@ const AssignComponent = ({ page }) => {
     // dispatch(fetchFunctional())
     // dispatch(fetchLoading())
     // dispatch(fetchCreditControl())
-    dispatch(fetchDistribuation())
+    // dispatch(fetchDistribuation())
     // dispatch(fetchBusiness())
     dispatch(fetchPlant())
     // dispatch(fetchProfitCenter())
-    // dispatch(fetchDivision())
+    dispatch(fetchDivision())
     dispatch(fetchsalesOrg())
     // dispatch(fetchSalesOffice())
     // dispatch(fetchSalesGrp())
@@ -197,21 +197,30 @@ const AssignComponent = ({ page }) => {
   }
 
 
-  return (
-    <>
+  return(
 
-{/* Assuming company.data is an array */}
-    
 
-    <Purchasing_Plant formData={state.PurchasingOrg.data} form2Data={state.Plant.data} />
-    
-    
 
-      <button className="bg-gray-300 p-2 m-2 float-right" onClick={dispatcher}>
-        open
-      </button>
-    </>
-  );
+<div className= " define-container bg-gray-100 min-h-screen">
+{
+
+  page.tcode=="GS10028"? <Purchasing_Plant  tableHead={["Purchasing Org", "Plant"]}  formData={state.PurchasingOrg.data} form2Data={state.Plant.data} /> :
+  <Division_SalesOrg  tableHead = {["Division", "Sales Organization"]} formData={state.Division.data} form2Data={state.salesOrg.data} />
+
+
+}
+
+
+
+  <button className="button " onClick={dispatcher}>
+    Show
+  </button>
+</div>
+
+
+  )
+
+
 };
 
 export default AssignComponent;

@@ -61,10 +61,11 @@ const ControlBar = ({ controls, getV }) => {
         
         (state!=null)? ( 
           <select 
+          className='bg-gray-100 p-2  rounded-md'
           onChange={(e) => handleSelectChange(e)}
             
           >
-          <option   className="bg-gray-100 p-2 rounded-md" value="">Select Form Item</option>
+          <option   className="bg-gray-100 p-2 rounded-md" value=""> {Object.keys(state)[5]}</option>
           {state.Division.data &&
             state.Division.data.map((formItem, index) => (
               <option key={index} value={formItem.form[index]}>

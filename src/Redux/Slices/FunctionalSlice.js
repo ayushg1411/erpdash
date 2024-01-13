@@ -4,6 +4,15 @@ export const fetchFunctional = createAsyncThunk ('fetchFunctional',  async()=>{
     const response = await fetch('https://sdaf-ijn7.onrender.com/api/user/define/659fad8fa19f785b6b0bd353');
     return response.json();
 })
+export const fetchData = async (pageId) => {
+    try {
+      const response = await apiService.get(`/your-api-endpoint/${pageId}`);
+      return response.data;
+    } catch (error) {
+      console.error('Error fetching data:', error);
+      throw error; // Rethrow the error for the component to handle
+    }
+  };
 
 const FunctionalSlice = createSlice({
     name:"Functional",

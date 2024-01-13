@@ -18,12 +18,12 @@ const renderButtons = (data, tcodes) => {
     if (typeof value === "boolean" && value) {
       return (
         <button
-          className=" m-1 rounded-lg  bg-gray-300 h-[40px]"
+className='button'
           key={key}
           
           onClick={fetchapi}
         >
-          <p className="p-1"> {key}</p>
+        {key}
         </button>
       );
     }

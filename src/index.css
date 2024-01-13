@@ -2,6 +2,38 @@
 @tailwind components;
 @tailwind utilities;
 
+body::-webkit-scrollbar {
+  width: 0.5em;
+}
+
+body::-webkit-scrollbar-thumb {
+  background-color: #718096;
+  border-radius: 0.25em;
+}
+
+/* Optionally, you can style the scrollbar track */
+body::-webkit-scrollbar-track {
+  background-color: #a0aec0;
+}
+
+.custom-scrollbar {
+  scrollbar-width: thin;
+  scrollbar-color: #718096 #718096;
+}
+
+.custom-scrollbar::-webkit-scrollbar {
+  width: 12px;
+}
+
+.custom-scrollbar::-webkit-scrollbar-thumb {
+  background-color: #718096;
+  border-radius: 6px;
+}
+
+.custom-scrollbar::-webkit-scrollbar-track {
+  background-color: #718096;
+}
+
 @layer components {
   .custom-border {
     border: 2px solid #e53e3e; /* Replace with your desired border color */
@@ -24,5 +56,15 @@
 
   .input-tag-css{
     @apply w-full p-0 h-[28px] text-[16px] border focus:outline-none focus:border-blue-500
+  }
+  .button{
+    @apply    m-1  float-right  px-1 rounded-md bg-yellow-400 h-[40px] hover:bg-slate-100 focus:outline-none focus:ring focus:border-blue-300
+
+  }
+  .buttonAdd{
+    @apply    float-right  px-1 rounded-md bg-violet-500 h-[40px] hover:bg-slate-400 hover:text-white focus:outline-none focus:ring focus:border-blue-300
+  }
+  .define-container{
+    @apply  pl-3 pr-2
   }
 }

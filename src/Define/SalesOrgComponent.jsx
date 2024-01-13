@@ -67,12 +67,13 @@ const ControlBar = ({ controls, getV }) => {
         
         (state!=null)? ( 
           <select 
+          className='bg-gray-100 p-2  rounded-md'
           onChange={(e) => handleSelectChange(e)}
             
           >
-          <option   className="bg-gray-100 p-2 rounded-md" value="">Select Form Item</option>
-          {state.salesorg.data &&
-            state.salesorg.data.map((formItem, index) => (
+          <option   className="bg-gray-100 p-2 rounded-md" value="">{Object.keys(state)[13]}</option>
+          {state.salesOrg.data &&
+            state.salesOrg.data.map((formItem, index) => (
               <option key={index} value={formItem.form[index]}>
                 {/* You can customize the display of each option here */}
                 {formItem.form.SalesOrganization}

@@ -4,27 +4,25 @@ import React from 'react'
 import Form from '../Tools/Form'
 import { useState } from 'react';
 import {useDispatch, useSelector} from "react-redux"
-import { fetchsalesOrg } from "../Redux/Slices/salesOrgSlice";
-
+import { fetchCreditControl } from '../Redux/Slices/CreditControlSlice';
 
 const renderButtons = (data, tcodes) => {
   const dispatch=useDispatch();
   const fetchapi =() =>{
  
 
-      dispatch(fetchsalesOrg());
+      dispatch(fetchCreditControl());
     
   }
   return Object.entries(data).map(([key, value]) => {
     if (typeof value === "boolean" && value) {
       return (
         <button
-          className=" m-1 rounded-lg  bg-gray-300 h-[40px]"
-          key={key}
+className='button'          key={key}
           
           onClick={fetchapi}
         >
-          <p className="p-1"> {key}</p>
+        {key}
         </button>
       );
     }
@@ -68,11 +66,11 @@ const ControlBar = ({ controls, getV }) => {
             
           >
           <option   className="bg-gray-100 p-2 rounded-md" value="">{Object.keys(state)[1]}</option>
-          {state.salesorg.data &&
-            state.salesorg.data.map((formItem, index) => (
+          {state.CreditControl.data &&
+            state.CreditControl.data.map((formItem, index) => (
               <option key={index} value={formItem.form[index]}>
                 {/* You can customize the display of each option here */}
-                {formItem.form.SalesOrganization}
+                {formItem.form["Credit Control Area"]}
               </option>
             ))}
         </select>
