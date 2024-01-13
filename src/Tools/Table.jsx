@@ -31,3 +31,4 @@ const Table = ({ jsonData }) => {
 };
 
 export default Table;
+  

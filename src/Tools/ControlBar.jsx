@@ -48,7 +48,7 @@ const ControlBar = ({ controls }) => {
 
   return (
     <>
-      <div className="bg-gray-500 w-full min-w-[1500px] flex justify-between h-16 p-2">
+      <div className="bg-gray-500 w-full  flex justify-between h-16 p-2">
         <p className="text-3xl md:text-xl sm:text-xs xl:text-3xl mx-2 pt-2 text-white font-bold">
           {controls.name}
           <span className="text-2xl md:text-xl  xl:text-3xl sm:text-base mx-2 pt-2 text-black font-bold">

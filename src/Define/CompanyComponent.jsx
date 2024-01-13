@@ -64,10 +64,9 @@ const ControlBar = ({ controls, getV }) => {
         
         (state!=null)? ( 
           <select
-          className='bg-gray-100 p-2  rounded-md'
           onChange={(e) => handleSelectChange(e)}
          >
-          <option value="">{Object.keys(state)[0]}</option>
+          <option value="">Select Form Item</option>
           {state.company.data &&
             state.company.data.map((formItem, index) => (
               <option key={index} value={formItem.form[index]}>
@@ -115,9 +114,9 @@ const CompanyComponent = ({page}) => {
 <>
 
 
-{/* {
+{
   v!=null ? <h1>{v}</h1> :<h1></h1>
-} */}
+}
 <ControlBar getV={getV} controls={page} /> 
     <Form initialValues={initialValues} id={page._id} />
     </>
