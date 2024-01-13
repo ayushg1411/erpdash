@@ -6,9 +6,6 @@
 // import { fetchDivision } from "../Redux/Slices/DivisionSlice";
 // import { fetchsalesOrg } from "../Redux/Slices/salesOrgSlice";
 
-
-
-
 // const AssignComponent = ({ page }) => {
 
 //   const dispatch=useDispatch();
@@ -91,42 +88,34 @@
 
 //   return (
 //     <>
-  
 
 //   <div>
 //       {/* Assuming company.data is an array */}
-      
+
 //       { Division.Division.data && Division.Division.data.map((formItem, index) => (
 //         <div key={index}>
-       
+
 //           {/* Render form values here */}
 //           {Object.entries(formItem.form).map(([key, value]) => (
 //             <div key={key}>
 //               {
 //                 (key=="Division") ? (  <strong>{value}:</strong> ) : null
 //               }
-            
+
 //             </div>
 //           ))}
 //         </div>
 //       ))}
-      
+
 //     </div>
 
- 
-
-
 // <button className="bg-gray-300 p-2 m-2 float-right"   onClick={dispatcher}>open</button>
-
-
 
 //     </>
 //   );
 // };
 
 // export default AssignComponent;
-
-
 
 import React from "react";
 import { useState, useEffect } from "react";
@@ -147,11 +136,6 @@ import { fetchPlant } from "../Redux/Slices/PlantSlice";
 import { fetchBusiness } from "../Redux/Slices/BusinessSlice";
 import { fetchDistribuation } from "../Redux/Slices/DistribuationSlice";
 
-
-
-
-
-
 import Purchasing_Plant from "./PurchasingOrg_Plant";
 import Division_Plant from "./Division_Plant";
 import SalesOrg_Plant from "./SalesOrg_Plant";
@@ -163,20 +147,11 @@ import Business_Plant from "./Business_Plant";
 import Division_SalesOrg from "./Division_SalesOrg";
 import Distribuation_SalesOrg from "./Distribuation_SalesOrg";
 
-
-
-
-
-
-
-
-
-
 const AssignComponent = ({ page }) => {
   const dispatch = useDispatch();
-  const state= useSelector((state) =>state);
+  const state = useSelector((state) => state);
 
-  const dispatcher =() =>{
+  const dispatcher = () => {
     // dispatch(fetchCompanies()),
     // dispatch(fetchCompanysCodes())
     // dispatch(fetchFunctional())
@@ -184,43 +159,39 @@ const AssignComponent = ({ page }) => {
     // dispatch(fetchCreditControl())
     // dispatch(fetchDistribuation())
     // dispatch(fetchBusiness())
-    dispatch(fetchPlant())
+    dispatch(fetchPlant());
     // dispatch(fetchProfitCenter())
-    dispatch(fetchDivision())
-    dispatch(fetchsalesOrg())
+    dispatch(fetchDivision());
+    dispatch(fetchsalesOrg());
     // dispatch(fetchSalesOffice())
     // dispatch(fetchSalesGrp())
     // dispatch(fetchStorageLoc())
-    dispatch(fetchPurchasingOrg())
+    dispatch(fetchPurchasingOrg());
     // dispatch(fetchShipping())
     // dispatch(fetchLoading())
-  }
+  };
 
+  return (
+    <div className=" define-container bg-gray-100 min-h-screen">
+      {page.tcode == "GS10028" ? (
+        <Purchasing_Plant
+          tableHead={["Purchasing Org", "Plant"]}
+          formData={state.PurchasingOrg.data}
+          form2Data={state.Plant.data}
+        />
+      ) : (
+        <Division_SalesOrg
+          tableHead={["Division", "Sales Organization"]}
+          formData={state.Division.data}
+          form2Data={state.salesOrg.data}
+        />
+      )}
 
-  return(
-
-
-
-<div className= " define-container bg-gray-100 min-h-screen">
-{
-
-  page.tcode=="GS10028"? <Purchasing_Plant  tableHead={["Purchasing Org", "Plant"]}  formData={state.PurchasingOrg.data} form2Data={state.Plant.data} /> :
-  <Division_SalesOrg  tableHead = {["Division", "Sales Organization"]} formData={state.Division.data} form2Data={state.salesOrg.data} />
-
-
-}
-
-
-
-  <button className="button " onClick={dispatcher}>
-    Show
-  </button>
-</div>
-
-
-  )
-
-
+      <button className="button " onClick={dispatcher}>
+        Show
+      </button>
+    </div>
+  );
 };
 
 export default AssignComponent;

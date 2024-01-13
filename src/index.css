@@ -67,4 +67,28 @@ body::-webkit-scrollbar-track {
   .define-container{
     @apply  pl-3 pr-2
   }
+  .select{
+    @apply bg-gray-100 p-2 rounded-md
+  }
+  .control-bar{
+    @apply bg-gray-500  px-4 flex justify-between h-16 
+  }
+  .page-name{
+    @apply text-3xl md:text-xl sm:text-xs xl:text-3xl mx-2 pt-2 text-white font-bold
+  }
+  .page-tcode{
+    @apply text-2xl md:text-xl  xl:text-3xl sm:text-base mx-2 pt-2 text-black font-bold
+  }
+  .option{
+    @apply bg-gray-100 p-2 rounded-md
+  }
+  .button-container{
+    @apply flex flex-col sm:flex-row pt-2
+  }
+  .label{
+    @apply bg-gray-100 p-2 mx-2 rounded-md
+  }
+  .assign-searchbar{
+    @apply flex   justify-evenly p-2 bg-indigo-100
+  }
 }

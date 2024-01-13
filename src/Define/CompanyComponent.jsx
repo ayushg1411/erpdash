@@ -18,7 +18,7 @@ const renderButtons = (data, tcodes) => {
     if (typeof value === "boolean" && value) {
       return (
         <button
-          className=" m-1 rounded-lg  bg-gray-300 h-[40px]"
+          className="button"
           key={key}
           
           onClick={fetchapi}
@@ -38,11 +38,14 @@ const ControlBar = ({ controls, getV }) => {
   const [selectedFormItem, setSelectedFormItem] = useState(null);
 
   const handleSelectChange = (event) => {
+    console.log(state.CreditControl.data)
+    const index= event.target.value;
+    console.log(state.CreditControl.data[index]._id);
     const selectedIndex = event.target.value;
     console.log(event.target.value);
-    setSelectedFormItem(event.target.value);
+    setSelectedFormItem(state.CreditControl.data[index]._id);
     slv(selectedFormItem)
-    getV(event.target.value)
+    getV(state.CreditControl.data[index]._id)
   };
 
 
@@ -50,7 +53,7 @@ const ControlBar = ({ controls, getV }) => {
 
   return (
     <>
-      <div className="bg-gray-500  px-4 flex justify-between h-16 ">
+      <div className="control-bar">
         <p className="text-3xl md:text-xl sm:text-xs xl:text-3xl mx-2 pt-2 text-white font-bold">
           {controls.name}
           <span className="text-2xl md:text-xl  xl:text-3xl sm:text-base mx-2 pt-2 text-black font-bold">
@@ -70,7 +73,7 @@ const ControlBar = ({ controls, getV }) => {
           <option   className="bg-gray-100 p-2 rounded-md" value="">{Object.keys(state)[0]}</option>
           {state.CreditControl.data &&
             state.CreditControl.data.map((formItem, index) => (
-              <option key={index} value={formItem.form[index]}>
+              <option key={index} value={index}>
                 {/* You can customize the display of each option here */}
                 {formItem.form["Credit Control Area"]}
               </option>

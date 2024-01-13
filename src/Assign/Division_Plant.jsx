@@ -46,7 +46,7 @@ const Division_Plant = ({ formData, form2Data }) => {
               <select
                 id="selectBox1"
                 onChange={(e) => handleSelectChange(e, "option1")}
-                className="bg-gray-100 p-2 rounded-md"
+                className="select"
                 value={selectedOptions.option1}
               >
                 <option value="">Select...</option>
