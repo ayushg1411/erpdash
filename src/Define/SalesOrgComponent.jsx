@@ -9,6 +9,7 @@ import Form from '../Tools/Form'
 import { useState } from 'react';
 import {useDispatch, useSelector} from "react-redux"
 import { fetchsalesOrg } from "../Redux/Slices/salesOrgSlice";
+import DefineTable from '../Tools/DefineTable';
 
 
 const renderButtons = (data, tcodes) => {
@@ -127,6 +128,7 @@ const SalesOrgComponent = ({page}) => {
 <ControlBar getV={getV} controls={page} /> 
    { (v)?<h1>{v}</h1>: null}
     <Form initialValues={initialValues} id={page._id} />
+    <DefineTable id={page._id} />
     </div>
   )
 }
