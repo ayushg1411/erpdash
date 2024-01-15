@@ -10,7 +10,7 @@ const Table = ({ jsonData }) => {
 
   return (
     <div className='bg-gray-200 p-4 '>
-      <table className="table-auto w-64 border-collapse border border-gray-500  rounded-xl ">
+      <table className="table-auto w-150 border-collapse border border-gray-500  rounded-xl ">
       <thead>
         <tr>
           {headers.map((header) => (

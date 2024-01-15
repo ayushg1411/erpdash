@@ -1,17 +1,15 @@
-
-
 import React from 'react'
 import Form from '../Tools/Form'
 import { useState } from 'react';
 import {useDispatch, useSelector} from "react-redux"
-import { fetchCreditControl } from '../Redux/Slices/CreditControlSlice';
+import { fetchCompanies } from '../Redux/Slices/companySlice';
 
 const renderButtons = (data, tcodes) => {
   const dispatch=useDispatch();
   const fetchapi =() =>{
  
 
-      dispatch(fetchCreditControl());
+      dispatch(fetchCompanies());
     
   }
   return Object.entries(data).map(([key, value]) => {
@@ -38,25 +36,25 @@ const ControlBar = ({ controls, getV }) => {
   const [selectedFormItem, setSelectedFormItem] = useState(null);
 
   const handleSelectChange = (event) => {
-    console.log(state.CreditControl.data)
+    console.log(state.company.data)
     const index= event.target.value;
-    console.log(state.CreditControl.data[index]._id);
+    console.log(state.company.data[index]._id);
     const selectedIndex = event.target.value;
     console.log(event.target.value);
-    setSelectedFormItem(state.CreditControl.data[index]._id);
+    setSelectedFormItem(state.company.data[index]._id);
     slv(selectedFormItem)
-    getV(state.CreditControl.data[index]._id)
+    getV(state.company.data[index]._id)
   };
 
 
   const renderedButtons = renderButtons(controls, controls.tcode);
 
   return (
-    <>
+    <div>
       <div className="control-bar">
-        <p className="text-3xl md:text-xl sm:text-xs xl:text-3xl mx-2 pt-2 text-white font-bold">
+        <p className="page-name">
           {controls.name}
-          <span className="text-2xl md:text-xl  xl:text-3xl sm:text-base mx-2 pt-2 text-black font-bold">
+          <span className="page-tcode">
             {" "}
             - {controls.tcode}
           </span>
@@ -66,16 +64,16 @@ const ControlBar = ({ controls, getV }) => {
         (state!=null)? ( 
         <div className='py-2'>
              <select 
-          className='bg-gray-100   h-10 rounded-md'
+          className='select'
           onChange={(e) => handleSelectChange(e)}
             
           >
-          <option   className="bg-gray-100 p-2 rounded-md" value="">{Object.keys(state)[0]}</option>
-          {state.CreditControl.data &&
-            state.CreditControl.data.map((formItem, index) => (
+          <option   className="option" value="">{Object.keys(state)[0]}</option>
+          {state.company.data &&
+            state.company.data.map((formItem, index) => (
               <option key={index} value={index}>
                 {/* You can customize the display of each option here */}
-                {formItem.form["Credit Control Area"]}
+                {formItem.form["CompanyName"]}
               </option>
             ))}
         </select>
@@ -86,9 +84,9 @@ const ControlBar = ({ controls, getV }) => {
         
 
 {/* <button onClick={e=>dispatch(fetchCompanies())}>click</button> */}
-        <div className="flex flex-col sm:flex-row pt-2">{renderedButtons}</div>
+        <div className="button-container">{renderedButtons}</div>
       </div>
-    </>
+    </div>
   );
 };
 
@@ -103,15 +101,14 @@ const CompnayComponent = ({page}) => {
     sv((v)=> value);
   }
   const initialValues = {
-    "Credit Control Area": '',
-    "Currency": '',
-    "Update": '',
-    "Rep group": '',
-    "Fy Variant": '',
-    "Risk Category": '',
-    "Credit Limit": '',
-  
-    "All coCodes": '', // Added field
+    Company: "",
+    CompanyName: "",
+    Street: "",
+    Pobox: "",
+    PostalCode: "",
+    City: "", // Updated to use a select box
+    SelectCountry: "",
+    Currency: "inr",
   };
    
   return (

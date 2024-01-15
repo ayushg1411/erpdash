@@ -43,11 +43,14 @@ const ControlBar = ({ controls, getV }) => {
   const [selectedFormItem, setSelectedFormItem] = useState(null);
 
   const handleSelectChange = (event) => {
+    console.log(state.salesOrg.data)
+    const index= event.target.value;
+    console.log(state.salesOrg.data[index]._id);
     const selectedIndex = event.target.value;
     console.log(event.target.value);
-    setSelectedFormItem(event.target.value);
+    setSelectedFormItem(state.salesOrg.data[index]._id);
     slv(selectedFormItem)
-    getV(event.target.value)
+    getV(state.salesOrg.data[index]._id)
   };
 
 
@@ -75,9 +78,9 @@ const ControlBar = ({ controls, getV }) => {
           <option   className="option" value="">{Object.keys(state)[13]}</option>
           {state.salesOrg.data &&
             state.salesOrg.data.map((formItem, index) => (
-              <option key={index} value={formItem.form[index]}>
+              <option key={index} value={index}>
                 {/* You can customize the display of each option here */}
-                {formItem.form.SalesOrganization}
+                {formItem.form["SalesOrganization"]}
               </option>
             ))}
         </select>

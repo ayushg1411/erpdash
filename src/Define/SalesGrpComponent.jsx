@@ -37,11 +37,14 @@ const ControlBar = ({ controls, getV }) => {
   const [selectedFormItem, setSelectedFormItem] = useState(null);
 
   const handleSelectChange = (event) => {
+    console.log(state.SalesGrp.data)
+    const index= event.target.value;
+    console.log(state.SalesGrp.data[index]._id);
     const selectedIndex = event.target.value;
     console.log(event.target.value);
-    setSelectedFormItem(event.target.value);
+    setSelectedFormItem(state.SalesGrp.data[index]._id);
     slv(selectedFormItem)
-    getV(event.target.value)
+    getV(state.SalesGrp.data[index]._id)
   };
 
 
@@ -69,7 +72,7 @@ const ControlBar = ({ controls, getV }) => {
           <option   className="option" value="">{Object.keys(state)[11]}</option>
           {state.SalesGrp.data &&
             state.SalesGrp.data.map((formItem, index) => (
-              <option key={index} value={formItem.form[index]}>
+              <option key={index} value={index}>
                 {/* You can customize the display of each option here */}
                 {formItem.form[ "Sales Group"]}
               </option>
@@ -104,7 +107,7 @@ const SalesGrpComponent = ({page}) => {
   return (
 <div className='define-container'>
 <ControlBar getV={getV} controls={page} /> 
-   {/* { (v)?<h1>{v}</h1>: null} */}
+   { (v)?<h1>{v}</h1>: null}
     <Form initialValues={initialValues} id={page._id} />
     </div>
   )

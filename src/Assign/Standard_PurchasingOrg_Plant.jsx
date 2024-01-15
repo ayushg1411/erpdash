@@ -2,7 +2,7 @@ import React, { useState, useEffect } from "react";
 import Table from "../Tools/Table";
 import axios from "axios";
 
-const SalesOrg_Plant = ({ tableHead, formData, form2Data }) => {
+const Standard_PurchasingOrg_Plant = ({ tableHead, formData, form2Data, form3Data }) => {
   const [selectedOptions, setSelectedOptions] = useState({});
   const [renderedData, setRenderedData] = useState([]);
 
@@ -18,17 +18,20 @@ const SalesOrg_Plant = ({ tableHead, formData, form2Data }) => {
   const handleAddData = () => {
     if (
       selectedOptions[`${tableHead[0]}`] &&
-      selectedOptions[`${tableHead[1]}`]
+      selectedOptions[`${tableHead[1]}`] &&
+      selectedOptions[`${tableHead[2]}`] 
     ) {
       const newData = {
         [`${tableHead[0]}`]: selectedOptions[`${tableHead[0]}`],
         [`${tableHead[1]}`]: selectedOptions[`${tableHead[1]}`],
+        [`${tableHead[2]}`]: selectedOptions[`${tableHead[2]}`],
       };
       setRenderedData((prevData) => [...prevData, newData]);
       console.log(renderedData);
       setSelectedOptions({
         [`${tableHead[0]}`]: "",
         [`${tableHead[1]}`]: "",
+        [`${tableHead[2]}`]: "",
       });
     }
   };
@@ -52,10 +55,10 @@ const SalesOrg_Plant = ({ tableHead, formData, form2Data }) => {
             <option value="">Select...</option>
             {formData.map((option) => (
               <option
-                key={option.form.SalesOrganization}
-                value={option.form.SalesOrganization}
+                key={option.form.Plant}
+                value={option.form.Plant}
               >
-                {option.form.SalesOrganization}
+                {option.form.Plant}
               </option>
             ))}
           </select>
@@ -75,8 +78,29 @@ const SalesOrg_Plant = ({ tableHead, formData, form2Data }) => {
           >
             <option value="">Select...</option>
             {form2Data.map((option) => (
-              <option key={option.form.Plant} value={option.form.Plant}>
-                {option.form.Plant}
+              <option key={option.form["Purchase Organization"]} value={option.form["Purchase Organization"]}>
+                {option.form["Purchase Organization"]}
+              </option>
+            ))}
+          </select>
+        </div>
+        ) : null}
+        {form3Data ? (
+          <div>
+          {" "}
+          <label htmlFor="selectBox1" className="select">
+            {tableHead[2]}
+          </label>{" "}
+          <select
+            id="selectbox2"
+            onChange={(e) => handleSelectChange(e, tableHead[2])}
+            className="select"
+            value={selectedOptions[`${tableHead[2]}`]}
+          >
+            <option value="">Select...</option>
+            {form3Data.map((option) => (
+              <option key={option.form.Name1} value={option.form.Name1}>
+                {option.form.Name1}
               </option>
             ))}
           </select>
@@ -94,4 +118,4 @@ const SalesOrg_Plant = ({ tableHead, formData, form2Data }) => {
   );
 };
 
-export default SalesOrg_Plant;
+export default Standard_PurchasingOrg_Plant;

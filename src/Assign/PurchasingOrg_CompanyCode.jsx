@@ -2,7 +2,7 @@ import React, { useState, useEffect } from "react";
 import Table from "../Tools/Table";
 import axios from "axios";
 
-const CompanyCode_Company = ({ tableHead, formData, form2Data }) => {
+const Purchasing_CompanyCode = ({ tableHead, formData, form2Data }) => {
   const [selectedOptions, setSelectedOptions] = useState({});
   const [renderedData, setRenderedData] = useState([]);
 
@@ -29,13 +29,12 @@ const CompanyCode_Company = ({ tableHead, formData, form2Data }) => {
       setSelectedOptions({
         [`${tableHead[0]}`]: "",
         [`${tableHead[1]}`]: "",
-
       });
     }
   };
 
   return (
-     <>
+    <>
       <div className="p-0 m-0">
         <div className="assign-searchbar">
           {formData != null ? (
@@ -53,10 +52,10 @@ const CompanyCode_Company = ({ tableHead, formData, form2Data }) => {
                 <option value="">Select...</option>
                 {formData.map((option) => (
                   <option
-                    key={option.form.Company}
-                    value={option.form.Company}
+                    key={option.form.Descrition}
+                    value={option.form.Descrition}
                   >
-                    {option.form.Company}
+                    {option.form.Descrition}
                   </option>
                 ))}
               </select>
@@ -76,8 +75,8 @@ const CompanyCode_Company = ({ tableHead, formData, form2Data }) => {
               >
                 <option value="">Select...</option>
                 {form2Data.map((option) => (
-                  <option key={option.form["CompanyName"]} value={option.form["CompanyName"]}>
-                    {option.form["CompanyName"]}
+                  <option key={option.form.Company} value={option.form.Company}>
+                    {option.form.Company}
                   </option>
                 ))}
               </select>
@@ -98,4 +97,4 @@ const CompanyCode_Company = ({ tableHead, formData, form2Data }) => {
   );
 };
 
-export default CompanyCode_Company;
+export default Purchasing_CompanyCode;

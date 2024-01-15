@@ -2,7 +2,7 @@ import React, { useState, useEffect } from "react";
 import Table from "../Tools/Table";
 import axios from "axios";
 
-const Shipping_Plant = ({ tableHead, formData, form2Data }) => {
+const Plant_CompanyCode = ({ tableHead, formData, form2Data }) => {
   const [selectedOptions, setSelectedOptions] = useState({});
   const [renderedData, setRenderedData] = useState([]);
 
@@ -29,6 +29,7 @@ const Shipping_Plant = ({ tableHead, formData, form2Data }) => {
       setSelectedOptions({
         [`${tableHead[0]}`]: "",
         [`${tableHead[1]}`]: "",
+
       });
     }
   };
@@ -52,10 +53,10 @@ const Shipping_Plant = ({ tableHead, formData, form2Data }) => {
               <option value="">Select...</option>
               {formData.map((option) => (
                 <option
-                  key={option.form["Shipping Point"]}
-                  value={option.form["Shipping Point"]}
+                  key={option.form.Company}
+                  value={option.form.Company}
                 >
-                  {option.form["Shipping Point"]}
+                  {option.form.Company}
                 </option>
               ))}
             </select>
@@ -94,4 +95,4 @@ const Shipping_Plant = ({ tableHead, formData, form2Data }) => {
   );
 };
 
-export default Shipping_Plant;
+export default Plant_CompanyCode;

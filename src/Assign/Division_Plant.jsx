@@ -2,7 +2,7 @@ import React, { useState, useEffect } from "react";
 import Table from "../Tools/Table";
 import axios from "axios";
 
-const Division_Plant = ({ formData, form2Data }) => {
+const Division_Plant = ({ tableHead, formData, form2Data }) => {
   const [selectedOptions, setSelectedOptions] = useState({});
   const [renderedData, setRenderedData] = useState([]);
 
@@ -16,79 +16,81 @@ const Division_Plant = ({ formData, form2Data }) => {
   };
 
   const handleAddData = () => {
-    console.log(renderedData);
-    if (selectedOptions.option1 && selectedOptions.option2) {
+    if (
+      selectedOptions[`${tableHead[0]}`] &&
+      selectedOptions[`${tableHead[1]}`]
+    ) {
       const newData = {
-        option1: selectedOptions.option1,
-        option2: selectedOptions.option2,
+        [`${tableHead[0]}`]: selectedOptions[`${tableHead[0]}`],
+        [`${tableHead[1]}`]: selectedOptions[`${tableHead[1]}`],
       };
       setRenderedData((prevData) => [...prevData, newData]);
-
+      console.log(renderedData);
       setSelectedOptions({
-        option1: "",
-        option2: "",
+        [`${tableHead[0]}`]: "",
+        [`${tableHead[1]}`]: "",
+
       });
     }
   };
 
   return (
     <>
-        <div className="flex w-full justify-evenly p-4 bg-sky-100">
+      <div className="p-0 m-0">
+        <div className="assign-searchbar">
           {formData != null ? (
             <div>
-              {" "}
-              <label
-                htmlFor="selectBox1"
-                className="bg-gray-100 p-2 mx-2 rounded-md"
-              >
-                company
-              </label>
-              <select
-                id="selectBox1"
-                onChange={(e) => handleSelectChange(e, "option1")}
-                className="select"
-                value={selectedOptions.option1}
-              >
-                <option value="">Select...</option>
-                {formData.map((option) => (
-                  <option key={option.form.Name} value={option.form.Name}>
-                    {option.form.Name}
-                  </option>
-                ))}
-              </select>
-            </div>
+            {" "}
+            <label htmlFor="selectBox1" className="label">
+              {tableHead[0]}
+            </label>
+            <select
+              id="selectBox1"
+              onChange={(e) => handleSelectChange(e, tableHead[0])}
+              className="select"
+              value={selectedOptions[`${tableHead[0]}`]}
+            >
+              <option value="">Select...</option>
+              {formData.map((option) => (
+                <option
+                  key={option.form.Division}
+                  value={option.form.Division}
+                >
+                  {option.form.Division}
+                </option>
+              ))}
+            </select>
+          </div>
           ) : null}
           {form2Data ? (
             <div>
-              {" "}
-              <label
-                htmlFor="selectBox1"
-                className="bg-gray-100 p-2  mx-2 rounded-md"
-              >
-                company
-              </label>{" "}
-              <select
-                id="selectbox2"
-                onChange={(e) => handleSelectChange(e, "option2")}
-                className="bg-gray-100 p-2 rounded-md"
-                value={selectedOptions.option2}
-              >
-                <option value="">Select...</option>
-                {form2Data.map((option) => (
-                  <option key={option.form.Plant} value={option.form.Plant}>
-                    {option.form.Plant}
-                  </option>
-                ))}
-              </select>
-            </div>
+            {" "}
+            <label htmlFor="selectBox1" className="select">
+              {tableHead[1]}
+            </label>{" "}
+            <select
+              id="selectbox2"
+              onChange={(e) => handleSelectChange(e, tableHead[1])}
+              className="select"
+              value={selectedOptions[`${tableHead[1]}`]}
+            >
+              <option value="">Select...</option>
+              {form2Data.map((option) => (
+                <option key={option.form.Plant} value={option.form.Plant}>
+                  {option.form.Plant}
+                </option>
+              ))}
+            </select>
+          </div>
           ) : null}
-          <button className="px-4 bg-yellow-300 p-1" onClick={handleAddData}>
+          <button className="buttonAdd" onClick={handleAddData}>
             Add Data
           </button>
         </div>
-      <div className="mx-32">
+      <div>
         <Table jsonData={renderedData} />
       </div>
+    </div>
     </>
   );
 };

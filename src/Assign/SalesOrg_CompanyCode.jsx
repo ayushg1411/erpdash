@@ -2,7 +2,7 @@ import React, { useState, useEffect } from "react";
 import Table from "../Tools/Table";
 import axios from "axios";
 
-const SalesOrg_Plant = ({ tableHead, formData, form2Data }) => {
+const SalesOrg_CompanyCode = ({ tableHead, formData, form2Data }) => {
   const [selectedOptions, setSelectedOptions] = useState({});
   const [renderedData, setRenderedData] = useState([]);
 
@@ -75,8 +75,8 @@ const SalesOrg_Plant = ({ tableHead, formData, form2Data }) => {
           >
             <option value="">Select...</option>
             {form2Data.map((option) => (
-              <option key={option.form.Plant} value={option.form.Plant}>
-                {option.form.Plant}
+              <option key={option.form.Company} value={option.form.Company}>
+                {option.form.Company}
               </option>
             ))}
           </select>
@@ -94,4 +94,4 @@ const SalesOrg_Plant = ({ tableHead, formData, form2Data }) => {
   );
 };
 
-export default SalesOrg_Plant;
+export default SalesOrg_CompanyCode;
