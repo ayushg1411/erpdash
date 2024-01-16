@@ -45,14 +45,17 @@ const DefineTable = ({ id, getId }) => {
       const formId = item._id;
 
       return (
-        <tr key={index} className={selectedForm === formId ? 'bg-gray-300' : ''}>
+        <tr key={index} className={selectedForm === formId ? w-'bg-gray-300' : ''}>
           <td className="p-2 border">
-            <label htmlFor={`checkbox-${index}`}>{index}</label>
+            <label htmlFor={`checkbox-${index}`} className="cursor-pointer">
+              {index}
+            </label>
             <input
               id={`checkbox-${index}`}
               type="checkbox"
               onChange={(e) => handleSelectChange(e, formId)}
               checked={selectedForm === formId}
+              className="mx-2 cursor-pointer"
             />
           </td>
 
@@ -67,12 +70,11 @@ const DefineTable = ({ id, getId }) => {
   };
 
   return (
-    <div className="max-w-screen-lg mx-auto">
+    <div className="max-w-screen-lg mx-auto mt-8 overflow-x-auto overflow-y-auto">
       <table className="w-full border-collapse border border-gray-800">
         <thead>{renderTableHeader()}</thead>
         <tbody>{renderTableRows()}</tbody>
       </table>
-   
     </div>
   );
 };
