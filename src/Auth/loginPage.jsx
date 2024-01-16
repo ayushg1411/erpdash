@@ -22,6 +22,7 @@ function LoginPage(){
                 const result = response.data;
                 console.log(result)
                 setloading(false)
+                
                 if(result)
               {  window.location.href='/main'
                 localStorage.setItem('currentUser', JSON.stringify(result))}
