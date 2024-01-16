@@ -96,6 +96,9 @@ const ControlBar = ({ controls, getV }) => {
 
 
 const CompnayComponent = ({page}) => {
+  const user = JSON.parse(localStorage.getItem("currentUser"))
+  console.log("user", user);
+  console.log("user")
   const [v, sv]= useState(null);
   const [id, sid] = useState(null);
   const state= useSelector((state)=>state)

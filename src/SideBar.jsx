@@ -29,7 +29,7 @@ const Sidebar = ({ data }) => {
   };
 
   return (
-    <div className="bg-gray-800 min-h-screen p-4 overflow-y-auto custom-scrollbar">
+    <div className="bg-gray-800 min-w-[300px] min-h-screen p-4 overflow-y-auto custom-scrollbar">
       <div className="flex items-center mb-4">
         <img src={YourLogo} alt="Your App Logo" className="mr-2" style={{ width: '40px', height: '40px' }} />
         <h1 className="text-xl text-white font-bold">{appName}</h1>

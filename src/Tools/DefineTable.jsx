@@ -1,4 +1,6 @@
 import React, { useState, useEffect } from 'react';
+import * as XLSX from 'xlsx';
+import '../Tools/print.css'; 
 
 const DefineTable = ({ id, getId }) => {
   const [tableData, setTableData] = useState([]);
@@ -23,6 +25,27 @@ const DefineTable = ({ id, getId }) => {
     setSelectedForm(formId);
   };
 
+  const handlePrint = () => {
+    window.print();
+  };
+
+  const handleExportExcel = () => {
+    const dataForExcel = tableData.map((item) => {
+      const formData = item.form;
+      const formId = item._id;
+      const row = {
+        Select: selectedForm === formId ? 'Selected' : '',
+        ...formData,
+      };
+      return row;
+    });
+
+    const worksheet = XLSX.utils.json_to_sheet(dataForExcel);
+    const workbook = XLSX.utils.book_new();
+    XLSX.utils.book_append_sheet(workbook, worksheet, 'Sheet1');
+    XLSX.writeFile(workbook, 'table_data.xlsx');
+  };
+
   const renderTableHeader = () => {
     if (tableData.length === 0) return null;
 
@@ -45,7 +68,7 @@ const DefineTable = ({ id, getId }) => {
       const formId = item._id;
 
       return (
-        <tr key={index} className={selectedForm === formId ? w-'bg-gray-300' : ''}>
+        <tr key={index} className={selectedForm === formId ? 'bg-gray-300' : ''}>
           <td className="p-2 border">
             <label htmlFor={`checkbox-${index}`} className="cursor-pointer">
               {index}
@@ -71,7 +94,14 @@ const DefineTable = ({ id, getId }) => {
 
   return (
     <div className="max-w-screen-lg mx-auto mt-8 overflow-x-auto overflow-y-auto">
-      <table className="w-full border-collapse border border-gray-800">
+      <button onClick={handlePrint} className="mr-4 bg-blue-500 text-white px-4 py-2">
+        Print
+      </button>
+      <button onClick={handleExportExcel} className="bg-green-500 text-white px-4 py-2">
+        Excel
+      </button>
+      <table className="w-full border-collapse border border-gray-800 print-table">
+        {}
         <thead>{renderTableHeader()}</thead>
         <tbody>{renderTableRows()}</tbody>
       </table>

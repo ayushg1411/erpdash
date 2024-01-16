@@ -1,0 +1,24 @@
+/* DefineTable.css */
+@media print {
+  body * {
+    visibility: hidden;
+  }
+
+  .print-table,
+  .print-table * {
+    visibility: visible;
+  }
+
+  .print-table {
+    position: absolute;
+    left: 0;
+    top: 0;
+    width: 100%; /* Ensure the table takes the full width of the printed page */
+  }
+
+  /* Adjust margins, font size, or any other styles as needed */
+  body {
+    margin: 0.5in; /* Adjust margins as needed */
+    font-size: 12px; /* Adjust font size as needed */
+  }
+}

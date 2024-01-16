@@ -22,11 +22,12 @@ import DistribuationComponent from "./Define/DistribuationComponent";
 import ControlBar from "./Tools/ControlBar";
 
 import AssignComponent from "./Assign/AssignComponent";
+import Sidebar from "./SideBar";
 // import Division_to_SalesOrg from "./Assign/Division_SalesOrg";
 
 // Import other components as needed
 
-const PageComponent = ({ page, tc }) => {
+const PageComponent = ({ page, tc, data }) => {
   const renderPageContent = () => {
 
     if(tc!=null)
@@ -110,14 +111,20 @@ const PageComponent = ({ page, tc }) => {
   };
 
   return (
-    <div>
+    <div className="flex"> 
     <div className="">
     {
       (  page.tcode >= "GS10017" && page.tcode <= "GS10034") ?      <ControlBar controls={page} /> : null
       }
     </div>
- 
-      {renderPageContent()}
+    <div className='min-w-[300px] max-w-[340px] sm:w-1/2 md:w-full lg:w-full xl:w-1/1 fixed h-screen overflow-y-auto '>
+      
+  <Sidebar  data={data}/>
+  
+      </div>
+    <div className="flex-1 overflow-y-auto  ml-[340px]">
+    {renderPageContent()}
+    </div>
     </div>
   );
 };

@@ -1,7 +1,7 @@
-import React from "react";
+import React, { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { fetchCompanies } from "../Redux/Slices/companySlice";
-import { fetchCompanysCodes } from "../Redux/Slices/CompanyCodeSlice";
+import { fetchCompanysCodes } from "../Redux/Slices/companyCodeSlice";
 import { fetchFunctional } from "../Redux/Slices/FunctionalSlice";
 import { fetchLoading } from "../Redux/Slices/LoadingSlice";
 import { fetchCreditControl } from "../Redux/Slices/CreditControlSlice";
@@ -42,30 +42,33 @@ const AssignComponent = ({ page }) => {
   const dispatch = useDispatch();
   const state = useSelector((state) => state);
 
-  const dispatcher = async () => {
-    try {
-      await Promise.all([
-        dispatch(fetchCompanies()),
-        dispatch(fetchCompanysCodes()),
-        dispatch(fetchFunctional()),
-        dispatch(fetchLoading()),
-        dispatch(fetchCreditControl()),
-        dispatch(fetchDistribuation()),
-        dispatch(fetchBusiness()),
-        dispatch(fetchPlant()),
-        dispatch(fetchProfitCenter()),
-        dispatch(fetchDivision()),
-        dispatch(fetchsalesOrg()),
-        dispatch(fetchSalesOffice()),
-        dispatch(fetchSalesGrp()),
-        dispatch(fetchStorageLoc()),
-        dispatch(fetchPurchasingOrg()),
-        dispatch(fetchShipping()),
-      ]);
-    } catch (error) {
-      console.error("Error fetching data:", error);
-    }
-  };
+
+  useEffect (  ()=>{
+  
+      try {
+  
+          dispatch(fetchCompanies()),
+          dispatch(fetchCompanysCodes())
+          dispatch(fetchFunctional()),
+          dispatch(fetchLoading()),
+          dispatch(fetchCreditControl()),
+          dispatch(fetchDistribuation()),
+          dispatch(fetchBusiness()),
+          dispatch(fetchPlant()),
+          dispatch(fetchProfitCenter()),
+          dispatch(fetchDivision()),
+          dispatch(fetchsalesOrg()),
+          dispatch(fetchSalesOffice()),
+          dispatch(fetchSalesGrp()),
+          dispatch(fetchStorageLoc()),
+          dispatch(fetchPurchasingOrg()),
+          dispatch(fetchShipping())
+     
+      } catch (error) {
+        console.error("Error fetching data:", error);
+      }
+ 
+  },[])
 
   const renderComponent = () => {
     switch (page.tcode) {
@@ -253,9 +256,9 @@ const AssignComponent = ({ page }) => {
   return (
     <div className="define-container bg-gray-100 min-h-screen">
       {renderComponent()}
-      <button className="button" onClick={dispatcher}>
+      {/* <button className="button" onClick={dispatcher}>
         Show
-      </button>
+      </button> */}
     </div>
   );
 };
