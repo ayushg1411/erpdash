@@ -41,7 +41,7 @@ const ControlBar = ({ controls }) => {
 
   return (
     <>
-      <div className="mb-4 bg-gradient-to-r from-blue-500 to-blue-800 p-4 flex justify-between rounded-lg shadow-md">
+      <div className="mb-4 bg-gradient-to-r from-gray-500 to-blue-800 p-4 flex justify-between rounded-lg shadow-md">
         <p className="text-3xl md:text-xl sm:text-xs xl:text-3xl mx-2 pt-2 text-white font-bold">
           {controls.name}
           <span className="text-2xl md:text-xl xl:text-3xl sm:text-base mx-2 pt-2 text-black font-bold">

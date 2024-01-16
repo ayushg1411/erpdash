@@ -76,8 +76,8 @@ const CompanyCode_Company = ({ tableHead, formData, form2Data }) => {
               >
                 <option value="">Select...</option>
                 {form2Data.map((option) => (
-                  <option key={option.form["CompanyName"]} value={option.form["CompanyName"]}>
-                    {option.form["CompanyName"]}
+                  <option key={option.form["Company Name"]} value={option.form["Company Name"]}>
+                    {option.form["Company Name"]}
                   </option>
                 ))}
               </select>

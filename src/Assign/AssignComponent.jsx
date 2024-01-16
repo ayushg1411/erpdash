@@ -31,10 +31,11 @@ import Purchasing_CompanyCode from "./PurchasingOrg_CompanyCode";
 import Purchasing_Plant from "./PurchasingOrg_Plant";
 import Standard_PurchasingOrg_Plant from "./Standard_PurchasingOrg_Plant";
 import PurchasingOrg_ReferencePurchasingOrg from "./PurchasingOrg_ReferencePurchasingOrg";
-import SalesOrg_Plant from "./SalesOrg_Plant";
+import SalesArea_Rule from "./SalesArea_Rule";
 import Business_Plant_Divison from "./Business_Plant_Divison";
 import SalesArea_Business from "./SalesArea_Business";
 import Shipping_Plant from "./Shipping_Plant";
+import SalesOrg_Plant from "./SalesOrg_Plant";
 import Division_Plant from "./Division_Plant";
 
 const AssignComponent = ({ page }) => {
@@ -183,8 +184,8 @@ const AssignComponent = ({ page }) => {
           return (
           <Standard_PurchasingOrg_Plant
             tableHead={["Plant","Purchasing Organization", "Plant Description"]}
-            formData={state.PurchasingOrg.data}
-            form2Data={state.Plant.data}
+            formData={state.Plant.data}
+            form2Data={state.PurchasingOrg.data}
             form3Data={state.Plant.data}
           />
         ); 
@@ -200,10 +201,12 @@ const AssignComponent = ({ page }) => {
       
         case "GS10031" :
           return (
-          <SalesOrg_Plant
-            tableHead={["Sales Area", "Rule"]}
-            formData={state.salesOrg.data}
-            form2Data={state.Plant.data}
+          <SalesArea_Rule
+          tableHead={["Sales Organization ", "Distribuation Channel ","Division", "Rule"]}
+          formData={state.salesOrg.data}
+          form2Data={state.Distribuation.data}
+          form3Data={state.Division.data}
+          form4Data={state.Plant.data}
           />
         ); 
       
@@ -221,7 +224,7 @@ const AssignComponent = ({ page }) => {
         case "GS10033" :
           return (
           <SalesArea_Business
-            tableHead={["Sales Organization ", "Distribuation Channel ","Division", "Business"]}
+            tableHead={["Sales Organization ", "Distribuation Channel ","Division", "Business Area"]}
             formData={state.salesOrg.data}
             form2Data={state.Distribuation.data}
             form3Data={state.Division.data}
