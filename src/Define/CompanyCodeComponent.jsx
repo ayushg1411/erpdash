@@ -81,7 +81,7 @@ const CompanyCodeComponent = ({ page }) => {
     sid((id) => value);
   };
   const initialValues = {
-    "Company": "",
+    "Company Code": "",
     "Company Name": "",
     "Street": "",
    " PO Box": "",
