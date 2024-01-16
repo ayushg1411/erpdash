@@ -104,17 +104,17 @@ const ControlBar = ({ controls, getV }) => {
 const SalesOrgComponent = ({page}) => {
 
   const initialValues = {
-    "SalesOrganization": '',
-    "StatisticsCurrency": '',
-    "AddressText": '',
+    "Sales Organization": '',
+    "Statistics Currency": '',
+    "Address Text": '',
     "RefSorg DocType": '',
-    "LetterHeaderText": '',
-    "CustomerIntercoBill": '',
-    "FooterLinesText": '',
-    "SalesOrgCalendar": '',
-    "GreetingTextName": '',
-    "TextSDSSender": '',
-    "RebateProcActive": false,
+    "Letter Header Text": '',
+    "Customer Interco Bill": '',
+    "Footer Lines Text": '',
+    "Sales Organization Calendar": '',
+    "Greeting Text Name": '',
+    "Text SDS Sender": '',
+    "Rebate Proc Active": '',
   };
   const [v, sv]= useState(null);
   const state= useSelector((state)=>state)

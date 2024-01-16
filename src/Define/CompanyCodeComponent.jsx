@@ -81,15 +81,15 @@ const CompanyCodeComponent = ({ page }) => {
     sid((id) => value);
   };
   const initialValues = {
-    Company: "",
-    CompanyName: "",
-    Street: "",
-    Pobox: "",
-    PostalCode: "",
-    City: "", 
-    SelectCountry: "",
-    Currency: "inr",
-    Language: "",
+    "Company": "",
+    "Company Name": "",
+    "Street": "",
+   " PO Box": "",
+    "Postal Code": "",
+    "City": "", 
+    "Select Country": "",
+    "Currency": "inr",
+    "Language": "",
   };
 
 

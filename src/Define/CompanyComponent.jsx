@@ -101,14 +101,14 @@ const CompnayComponent = ({page}) => {
     sv((v)=> value);
   }
   const initialValues = {
-    Company: "",
-    CompanyName: "",
-    Street: "",
-    Pobox: "",
-    PostalCode: "",
-    City: "", // Updated to use a select box
-    SelectCountry: "",
-    Currency: "inr",
+    "Company": "",
+    "Company Name": "",
+    "Street": "",
+   " PO Box": "",
+    "Postal Code": "",
+    "City": "", 
+    "Select Country": "",
+    "Currency": "inr",
   };
    
   return (
