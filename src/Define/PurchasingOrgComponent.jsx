@@ -1,12 +1,9 @@
-
-
-
-
-import React from 'react'
+import React,{ useEffect} from 'react';
 import Form from '../Tools/Form'
 import { useState } from 'react';
 import {useDispatch, useSelector} from "react-redux"
 import { fetchPurchasingOrg } from '../Redux/Slices/PurchasingOrgSlice';
+import DefineTable from "../Tools/DefineTable";
 const renderButtons = (data, tcodes) => {
   const dispatch=useDispatch();
   const fetchapi =() =>{
@@ -33,6 +30,7 @@ const renderButtons = (data, tcodes) => {
 };
 const ControlBar = ({ controls, getV }) => {
   const [ vl, slv] = useState(null);
+  
 
   const dispatch=useDispatch();
   const state= useSelector((state) =>state);
@@ -99,10 +97,14 @@ const ControlBar = ({ controls, getV }) => {
 
 const PurchasingOrgComponent = ({page}) => {
   const [v, sv]= useState(null);
+  const [id, sid] = useState(null);
   const state= useSelector((state)=>state)
   const getV =(value)=>{
     sv((v)=> value);
   }
+  const getId = (value) => {
+    sid((id) => value);
+  };
   const initialValues = {
     "Purchase Organization": '',
     "Descrition": '',
@@ -112,6 +114,11 @@ const PurchasingOrgComponent = ({page}) => {
 <ControlBar getV={getV} controls={page} /> 
    { (v)?<h1>{v}</h1>: null}
     <Form initialValues={initialValues} id={page._id} />
+
+    <div className="mt-4">
+        <DefineTable id={page._id} getId={getId} />
+        { (id)?<h1>{id}</h1>: <h1>noid</h1>} 
+      </div>
     </div>
   )
 }

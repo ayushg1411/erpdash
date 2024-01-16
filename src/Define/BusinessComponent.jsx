@@ -1,8 +1,9 @@
-import React from 'react'
-import Form from '../Tools/Form'
+import React,{ useEffect} from 'react';
+import Form from '../Tools/Form';
 import { useState } from 'react';
 import {useDispatch, useSelector} from "react-redux"
 import { fetchBusiness } from "../Redux/Slices/BusinessSlice";
+import DefineTable from "../Tools/DefineTable";
 
 const renderButtons = (data, tcodes) => {
   const dispatch=useDispatch();
@@ -95,22 +96,32 @@ const ControlBar = ({ controls, getV }) => {
 
 const BusinessComponent = ({page}) => {
   const [v, sv]= useState(null);
+  const [id, sid] = useState(null);
   const state= useSelector((state)=>state)
   const getV =(value)=>{
     sv((v)=> value);
-  }
+  };
+  const getId = (value) => {
+    sid((id) => value);
+  };
   const initialValues = {
     "Business Area": '',
     "Description": '',
   };
    
   return (
-<div className='define-container'>
-<ControlBar getV={getV} controls={page} /> 
-   { (v)?<h1>{v}</h1>: null}
-    <Form initialValues={initialValues} id={page._id} />
+    <div className="define-container">
+      <ControlBar getV={getV} controls={page} />
+      { (v)?<h1>{v}</h1>: null} 
+      {/* important comment */}
+      <Form initialValues={initialValues} id={page._id} />
+
+      <div className="mt-4">
+        <DefineTable id={page._id} getId={getId} />
+        { (id)?<h1>{id}</h1>: <h1>noid</h1>} 
+      </div>
     </div>
-  )
+  );
 }
 
 export default BusinessComponent
