@@ -42,7 +42,7 @@ useEffect(() => {
     <div className="App">
    
     
-    <BrowserRouter basename="/erpdash">
+    <BrowserRouter >
       <Routes>
         <Route path="/"  element={<Home />} />
         <Route path="/profile"  element={<Profile />} />

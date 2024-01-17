@@ -37,9 +37,9 @@ const Sidebar = ({ data }) => {
         <img src={YourLogo} alt="Your App Logo" className="mr-2" style={{ width: '40px', height: '40px' }} />
 
         <h1 className="text-xl text-white font-bold">{appName}</h1>
-        <Link to='/profile' >
+        <NavLink to='/profile' >
          <CgProfile className=' text-white ml-8 rounded-lg text-3xl'/>
-        </Link>
+        </NavLink>
       </div>
 
       <input
@@ -73,7 +73,7 @@ const Sidebar = ({ data }) => {
                 )
                 .map((page) => (
                   <li key={page._id} className="mb-2">
-                    <Link
+                    <NavLink
                       to={`/${section.name.toLowerCase()}/${page.tcode}`}
                       className={`block p-2 rounded-md ${
                         location.pathname ===
@@ -83,7 +83,7 @@ const Sidebar = ({ data }) => {
                       }`}
                     >
                       {page.name}
-                    </Link>
+                    </NavLink>
                   </li>
                 ))}
               {selectedTcode && (
