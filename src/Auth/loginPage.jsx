@@ -3,8 +3,11 @@ import axios from 'axios';
 import Loader from '../Tools/Loader';
 import Error from '../Tools/Error';
 import img from '../assets/what-is-ERP.jpg'
+import { useNavigate } from 'react-router-dom';
+
 
 function LoginPage() {
+  const navigate = useNavigate();
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
   const [loading, setLoading] = useState(false);
@@ -31,7 +34,7 @@ function LoginPage() {
 
       if (result._id) {
         // Redirect to the main page upon successful login
-        window.location.href = 'main';
+        navigate('/main');
         localStorage.setItem('currentUser', JSON.stringify(result));
       } else {
         setError(true);

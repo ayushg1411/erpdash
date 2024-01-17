@@ -47,7 +47,7 @@ useEffect(() => {
         <Route path="/"  element={<Home />} />
         <Route path="/profile"  element={<Profile />} />
         <Route path="/Login"  element={<LoginPage/>} />
-        <Route path='main' element={<MainScreen />} />
+        <Route path='/main' element={<MainScreen />} />
        
 
       </Routes>
