@@ -50,21 +50,7 @@ const ControlBar = ({ controls, getV }) => {
           {controls.name}
           <span className="page-tcode"> {" "}- {controls.tcode}</span>
         </p>
-        {state != null ? (
-          <div className="py-2">
-            <select className="select" onChange={(e) => handleSelectChange(e)}>
-              <option className="option" value="">
-                {Object.keys(state)[4]}
-              </option>
-              {state.CompanyCode.data &&
-                state.CompanyCode.data.map((formItem, index) => (
-                  <option key={index} value={index}>
-                    {formItem.form["Company"]}
-                  </option>
-                ))}
-            </select>
-          </div>
-        ) : null}
+     
         <div className="button-container">{renderedButtons}</div>
       </div>
     </div>

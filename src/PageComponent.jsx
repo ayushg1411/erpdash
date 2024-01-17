@@ -112,17 +112,18 @@ const PageComponent = ({ page, tc, data }) => {
 
   return (
     <div className="flex"> 
-    <div className="">
-    {
-      (  page.tcode >= "GS10017" && page.tcode <= "GS10034") ?      <ControlBar controls={page} /> : null
-      }
-    </div>
+   
     <div className='min-w-[300px] max-w-[340px] sm:w-1/2 md:w-full lg:w-full xl:w-1/1 fixed h-screen overflow-y-auto '>
       
   <Sidebar  data={data}/>
   
       </div>
-    <div className="flex-1 overflow-y-auto  ml-[340px]">
+    <div className="flex-1 overflow-y-auto  ml-[340px] min-w-[1480px] ">
+    <div className="">
+    {
+      (  page.tcode >= "GS10017" && page.tcode <= "GS10034") ?      <ControlBar controls={page} /> : null
+      }
+    </div>
     {renderPageContent()}
     </div>
     </div>

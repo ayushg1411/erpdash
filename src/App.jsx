@@ -4,6 +4,7 @@ import viteLogo from '/vite.svg'
 import axios from 'axios';
 import Home from './Home';
 import LoginPage from './Auth/loginPage';
+import Profile from './Auth/Profile';
 import MainScreen from './MainScreen';
 
 // App.jsx
@@ -44,16 +45,16 @@ useEffect(() => {
     <BrowserRouter>
       <Routes>
         <Route path="/"  element={<Home />} />
+        <Route path="/profile"  element={<Profile />} />
         <Route path="/Login"  element={<LoginPage/>} />
         <Route path='/main' element={<MainScreen />} />
        
 
-        {/* <Route path="*" element={<div>Not Found</div>} /> */}
       </Routes>
   
       <div className="flex ">
        
-        <div className="">
+       
           <Routes>
            
             {data.map((section) =>
@@ -66,7 +67,7 @@ useEffect(() => {
               ))
             )}
           </Routes>
-        </div>
+     
       </div>
       
     </BrowserRouter>

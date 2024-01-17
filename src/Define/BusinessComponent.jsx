@@ -60,28 +60,7 @@ const ControlBar = ({ controls, getV }) => {
             - {controls.tcode}
           </span>
         </p>
-        {
-        
-        (state!=null)? ( 
-       <div className="py-2">
-           <select 
-          className='select'
-          onChange={(e) => handleSelectChange(e)}
-            
-          >
-          <option   className="option" value="">{Object.keys(state)[3]}</option>
-          {state.Business.data &&
-            state.Business.data.map((formItem, index) => (
-              <option key={index} value={index}>
-                {/* You can customize the display of each option here */}
-                {formItem.form["Business Area"]}
-              </option>
-            ))}
-        </select>
-       </div>
-         ) : null
-       }
-        
+      
 
 {/* <button onClick={e=>dispatch(fetchCompanies())}>click</button> */}
         <div className="button-container">{renderedButtons}</div>

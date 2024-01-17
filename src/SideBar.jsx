@@ -1,11 +1,14 @@
 import React, { useState, useEffect } from 'react';
-import { Link, useLocation } from 'react-router-dom';
+import { Link, NavLink, useLocation } from 'react-router-dom';
 import YourLogo from '../Logo.jpg'; // Replace with the actual path to your logo image
+import { CgProfile } from "react-icons/cg";
 
 const appName = 'SAP ERP'; // Replace with your app name
 
 const Sidebar = ({ data }) => {
   const location = useLocation();
+  const user = JSON.parse(localStorage.getItem("currentUser"))
+
   const [collapsedSections, setCollapsedSections] = useState(
     Object.fromEntries(data.map((section) => [section._id, true]))
   );
@@ -32,7 +35,11 @@ const Sidebar = ({ data }) => {
     <div className="bg-gray-800 min-w-[300px] min-h-screen p-4 overflow-y-auto custom-scrollbar">
       <div className="flex items-center mb-4">
         <img src={YourLogo} alt="Your App Logo" className="mr-2" style={{ width: '40px', height: '40px' }} />
+
         <h1 className="text-xl text-white font-bold">{appName}</h1>
+        <Link to='/profile' >
+         <CgProfile className=' text-white ml-8 rounded-lg text-3xl'/>
+        </Link>
       </div>
 
       <input
@@ -41,6 +48,12 @@ const Sidebar = ({ data }) => {
         onChange={handleSearch}
         placeholder="Search Here"
       />
+      {
+ <Link to="https://saleserpdemo.bdtask-demo.com/v10_demo/home">
+ <p className='text-xl text-white font-bold mb-2'>Dashboard</p>
+</Link>
+      }
+     
       {data.map((section) => (
         <div key={section._id} className="mb-4">
           <div

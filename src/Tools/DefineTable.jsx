@@ -94,10 +94,10 @@ const DefineTable = ({ id, getId }) => {
 
   return (
     <div className="max-w-screen-lg mx-auto mt-8 overflow-x-auto overflow-y-auto">
-      <button onClick={handlePrint} className="mr-4 bg-blue-500 text-white px-4 py-2">
+      <button onClick={handlePrint} className="mr-4 bg-blue-500 rounded-md text-white px-4 mb-2 py-2">
         Print
       </button>
-      <button onClick={handleExportExcel} className="bg-green-500 text-white px-4 py-2">
+      <button onClick={handleExportExcel} className="bg-green-500 rounded-md text-white mb-2 px-4 py-2">
         Excel
       </button>
       <table className="w-full border-collapse border border-gray-800 print-table">

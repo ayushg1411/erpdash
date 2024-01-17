@@ -4,7 +4,7 @@ import { useState, useEffect } from 'react'
 import reactLogo from './assets/react.svg'
 import viteLogo from '/vite.svg'
 import axios from 'axios';
-import image from '../src/assets/Logo.jpg'
+import image from '../src/assets/img4.jpeg'
 
 // App.jsx
 import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
@@ -48,8 +48,8 @@ import PageComponent from './PageComponent';
    <img
    
    src={image}
-    width="100px"
-    height="100px"
+    className='h-screen ml-[280px] w-full-screen'
+    height="1000px"
    />
       </div>
 </div>

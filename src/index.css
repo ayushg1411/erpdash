@@ -93,3 +93,25 @@ body::-webkit-scrollbar-track {
     @apply flex   justify-evenly p-2 bg-indigo-100
   }
 }
+.loader-container {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 9999; /* Ensure the loader is on top of other elements */
+}
+
+.backdrop {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(255, 255, 255, 0.8); /* Adjust the alpha value for the desired level of blur */
+  filter: blur(5px); /* Adjust the blur amount as needed */
+  z-index: -1; /* Place the backdrop behind other elements */
+}

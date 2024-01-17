@@ -254,7 +254,7 @@ const AssignComponent = ({ page }) => {
   };
 
   return (
-    <div className="define-container bg-gray-100 min-h-screen">
+    <div className="define-container min-w-[1470px] bg-gray-100 min-h-screen">
       {renderComponent()}
       {/* <button className="button" onClick={dispatcher}>
         Show
