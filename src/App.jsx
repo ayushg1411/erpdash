@@ -39,25 +39,16 @@ useEffect(() => {
 
 
   return (
-    <div className="App">
+  
    
     
     <BrowserRouter >
       <Routes>
-        <Route path={"/"}  element={<Home />} />
-        <Route path={"/profile"}  element={<Profile />} />
-        <Route path="/Login"  element={<LoginPage/>} />
-        <Route path='/main' element={<MainScreen />} />
-       
-
-      </Routes>
-  
-      <div className="flex ">
-       
-       
-          <Routes>
-           
-            {data.map((section) =>
+      <Route path="/"  element={<Home />} ></Route>
+        <Route path="/profile"  element={<Profile />} ></Route>
+        <Route path="/Login"  element={<LoginPage/>} ></Route>
+        <Route path='/main' element={<MainScreen />} ></Route>
+    {data.map((section) =>
               section.checks.map((page) => (
                 <Route
                   key={page._id}
@@ -66,13 +57,11 @@ useEffect(() => {
                 />
               ))
             )}
-          </Routes>
-     
-      </div>
-      
+       
+      </Routes>
     </BrowserRouter>
 
-  </div>
+
   );
 };
 
