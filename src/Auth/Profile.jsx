@@ -7,7 +7,7 @@ function Profile() {
     // Clear all local storage
     localStorage.clear();
     // Redirect to the login page or any other desired page
-    window.location.href = '/login';
+    window.location.href = '/Login';
   };
 
   return (
