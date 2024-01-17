@@ -31,7 +31,7 @@ function LoginPage() {
 
       if (result._id) {
         // Redirect to the main page upon successful login
-        window.location.href = '/main';
+        window.location.href = 'main';
         localStorage.setItem('currentUser', JSON.stringify(result));
       } else {
         setError(true);
