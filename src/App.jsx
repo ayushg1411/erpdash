@@ -52,7 +52,23 @@ useEffect(() => {
 
       </Routes>
   
-    
+      <div className="flex ">
+       
+       
+          <Routes>
+           
+            {data.map((section) =>
+              section.checks.map((page) => (
+                <Route
+                  key={page._id}
+                  path={`/${section.name.toLowerCase()}/${page.tcode}`}
+                  element={<PageComponent data={data} page={page}  />}
+                />
+              ))
+            )}
+          </Routes>
+     
+      </div>
       
     </BrowserRouter>
 
