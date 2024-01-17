@@ -44,7 +44,7 @@ useEffect(() => {
     
     <BrowserRouter >
       <Routes>
-      <Route path="/"  element={<Home />} ></Route>
+      <Route path="/" exact element={<Home />} ></Route>
         <Route path="/profile"  element={<Profile />} ></Route>
         <Route path="/Login"  element={<LoginPage/>} ></Route>
         <Route path='/main' element={<MainScreen />} ></Route>
