@@ -1,13 +1,14 @@
 import React from 'react';
+import { useNavigate } from 'react-router-dom';
 
 function Profile() {
-
+const navigate= useNavigate();
     const user = JSON.parse(localStorage.getItem("currentUser"))
     const handleLogout = () => {
     // Clear all local storage
     localStorage.clear();
     // Redirect to the login page or any other desired page
-    window.location.href = '/Login';
+   navigate('/Login');
   };
 
   return (
