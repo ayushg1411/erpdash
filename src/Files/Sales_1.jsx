@@ -2,26 +2,28 @@ import React,{ useEffect} from 'react';
 import Form from '../Tools/Form'
 import { useState } from 'react';
 import {useDispatch, useSelector} from "react-redux"
-import { fetchCreditControl } from '../Redux/Slices/CreditControlSlice';
+import { fetchDivision } from "../Redux/Slices/DivisionSlice";
 import DefineTable from "../Tools/DefineTable";
+
 
 const renderButtons = (data, tcodes) => {
   const dispatch=useDispatch();
   const fetchapi =() =>{
  
 
-      dispatch(fetchCreditControl());
+      dispatch(fetchDivision());
     
   }
   return Object.entries(data).map(([key, value]) => {
     if (typeof value === "boolean" && value) {
       return (
         <button
-className='button'          key={key}
+          className=" button"
+          key={key}
           
           onClick={fetchapi}
         >
-        {key}
+          <p className="p-1"> {key}</p>
         </button>
       );
     }
@@ -36,14 +38,14 @@ const ControlBar = ({ controls, getV }) => {
   const [selectedFormItem, setSelectedFormItem] = useState(null);
 
   const handleSelectChange = (event) => {
-    console.log(state.CreditControl.data)
+    console.log(state.Division.data)
     const index= event.target.value;
-    console.log(state.CreditControl.data[index]._id);
+    console.log(state.Division.data[index]._id);
     const selectedIndex = event.target.value;
     console.log(event.target.value);
-    setSelectedFormItem(state.CreditControl.data[index]._id);
+    setSelectedFormItem(state.Division.data[index]._id);
     slv(selectedFormItem)
-    getV(state.CreditControl.data[index]._id)
+    getV(state.Division.data[index]._id)
   };
 
 
@@ -59,7 +61,7 @@ const ControlBar = ({ controls, getV }) => {
             - {controls.tcode}
           </span>
         </p>
-        
+      
         
 
 {/* <button onClick={e=>dispatch(fetchCompanies())}>click</button> */}
@@ -73,7 +75,19 @@ const ControlBar = ({ controls, getV }) => {
 
 
 
-const CreditControlComponent = ({page}) => {
+const DivisionComponent = ({page}) => {
+
+  const initialValues = {
+    // "Division": '',
+    // "Name": '',
+    "Standard Order":'',
+    "Net Value":'',
+    "Sold To Party":'',
+    "Ship To Party":'',
+    "PO Number":'',
+    "PO Date":'',
+    
+  };
   const [v, sv]= useState(null);
   const [id, sid] = useState(null);
   const state= useSelector((state)=>state)
@@ -83,23 +97,14 @@ const CreditControlComponent = ({page}) => {
   const getId = (value) => {
     sid((id) => value);
   };
-  const initialValues = {
-    "Credit Control Area": '',
-    "Currency": '',
-    "Update": '',
-    "Rep group": '',
-    "Fy Variant": '',
-    "Risk Category": '',
-    "Credit Limit": '',
-  
-    "All coCodes": '', // Added field
-  };
+ 
    
   return (
 <div className='define-container'>
 <ControlBar getV={getV} controls={page} /> 
    { (v)?<h1>{v}</h1>: null}
     <Form initialValues={initialValues} id={page._id} />
+
     <div className="mt-4">
         <DefineTable id={page._id} getId={getId} />
         { (id)?<h1>{id}</h1>: <h1>noid</h1>} 
@@ -108,4 +113,4 @@ const CreditControlComponent = ({page}) => {
   )
 }
 
-export default CreditControlComponent
+export default DivisionComponent

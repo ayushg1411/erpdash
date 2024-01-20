@@ -2,26 +2,26 @@ import React,{ useEffect} from 'react';
 import Form from '../Tools/Form'
 import { useState } from 'react';
 import {useDispatch, useSelector} from "react-redux"
-import { fetchCreditControl } from '../Redux/Slices/CreditControlSlice';
-import DefineTable from "../Tools/DefineTable";
-
+ import { fetchLoading } from '../Redux/Slices/LoadingSlice';
+ import DefineTable from "../Tools/DefineTable";
 const renderButtons = (data, tcodes) => {
   const dispatch=useDispatch();
   const fetchapi =() =>{
  
 
-      dispatch(fetchCreditControl());
+      dispatch(fetchLoading());
     
   }
   return Object.entries(data).map(([key, value]) => {
     if (typeof value === "boolean" && value) {
       return (
         <button
-className='button'          key={key}
+          className=" button"
+          key={key}
           
           onClick={fetchapi}
         >
-        {key}
+          <p className="p-1"> {key}</p>
         </button>
       );
     }
@@ -36,14 +36,14 @@ const ControlBar = ({ controls, getV }) => {
   const [selectedFormItem, setSelectedFormItem] = useState(null);
 
   const handleSelectChange = (event) => {
-    console.log(state.CreditControl.data)
+    console.log(state.Loading.data)
     const index= event.target.value;
-    console.log(state.CreditControl.data[index]._id);
+    console.log(state.Loading.data[index]._id);
     const selectedIndex = event.target.value;
     console.log(event.target.value);
-    setSelectedFormItem(state.CreditControl.data[index]._id);
+    setSelectedFormItem(state.Loading.data[index]._id);
     slv(selectedFormItem)
-    getV(state.CreditControl.data[index]._id)
+    getV(state.Loading.data[index]._id)
   };
 
 
@@ -59,8 +59,7 @@ const ControlBar = ({ controls, getV }) => {
             - {controls.tcode}
           </span>
         </p>
-        
-        
+      
 
 {/* <button onClick={e=>dispatch(fetchCompanies())}>click</button> */}
         <div className="button-container">{renderedButtons}</div>
@@ -73,7 +72,7 @@ const ControlBar = ({ controls, getV }) => {
 
 
 
-const CreditControlComponent = ({page}) => {
+const LoadingComponent = ({page}) => {
   const [v, sv]= useState(null);
   const [id, sid] = useState(null);
   const state= useSelector((state)=>state)
@@ -84,16 +83,21 @@ const CreditControlComponent = ({page}) => {
     sid((id) => value);
   };
   const initialValues = {
-    "Credit Control Area": '',
-    "Currency": '',
-    "Update": '',
-    "Rep group": '',
-    "Fy Variant": '',
-    "Risk Category": '',
-    "Credit Limit": '',
-  
-    "All coCodes": '', // Added field
-  };
+    // "Loading Point": '',
+    // "Responsibility": '',
+    // "Description": '',
+    "Sales Document Item":'',
+    "Item Category":'',
+    "Material":'',
+    "Pricing Date":'',
+    "Order Quantity":'',
+    "Batch":'',
+    "Bus. Transaction Type":'',
+    "Reason for Rejection":'',
+    "Unloading Point":'',
+    "Receaving Point":'',
+    "Plant":'',
+    };
    
   return (
 <div className='define-container'>
@@ -108,4 +112,4 @@ const CreditControlComponent = ({page}) => {
   )
 }
 
-export default CreditControlComponent
+export default LoadingComponent
