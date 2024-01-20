@@ -1,111 +1,547 @@
-import React,{ useEffect} from 'react';
-import Form from '../Tools/Form'
-import { useState } from 'react';
-import {useDispatch, useSelector} from "react-redux"
-import { fetchCreditControl } from '../Redux/Slices/CreditControlSlice';
-import DefineTable from "../Tools/DefineTable";
+// Import React and any necessary dependencies
+import React, { useState } from 'react';
 
-const renderButtons = (data, tcodes) => {
-  const dispatch=useDispatch();
-  const fetchapi =() =>{
- 
 
-      dispatch(fetchCreditControl());
-    
-  }
-  return Object.entries(data).map(([key, value]) => {
-    if (typeof value === "boolean" && value) {
-      return (
-        <button
-className='button'          key={key}
-          
-          onClick={fetchapi}
-        >
-        {key}
-        </button>
-      );
-    }
-    return null;
-  });
-};
-const ControlBar = ({ controls, getV }) => {
-  const [ vl, slv] = useState(null);
+function YourComponentName() {
+  const [selectAllReqd, setSelectAllReqd] = useState(false);
+  const [selectAllOpt, setSelectAllOpt] = useState(false);
+  const [selectAllDisplay, setSelectAllDisplay] = useState(false);
 
-  const dispatch=useDispatch();
-  const state= useSelector((state) =>state);
-  const [selectedFormItem, setSelectedFormItem] = useState(null);
-
-  const handleSelectChange = (event) => {
-    console.log(state.CreditControl.data)
-    const index= event.target.value;
-    console.log(state.CreditControl.data[index]._id);
-    const selectedIndex = event.target.value;
-    console.log(event.target.value);
-    setSelectedFormItem(state.CreditControl.data[index]._id);
-    slv(selectedFormItem)
-    getV(state.CreditControl.data[index]._id)
+  const handleCheckAllReqd = () => {
+    setSelectAllReqd(!selectAllReqd);
   };
 
+  const handleCheckAllOpt = () => {
+    setSelectAllOpt(!selectAllOpt);
+  };
 
-  const renderedButtons = renderButtons(controls, controls.tcode);
+  const handleCheckAllDisplay = () => {
+    setSelectAllDisplay(!selectAllDisplay);
+  };
+
+  const handleRowCheck = () => {
+    // Implement the logic if needed when a row checkbox is checked/unchecked
+  };
 
   return (
-    <div>
-      <div className="control-bar">
-        <p className="page-name">
-          {controls.name}
-          <span className="page-tcode">
-            {" "}
-            - {controls.tcode}
-          </span>
-        </p>
-        
-        
+    <div className="YourComponentName">
+       <style>{`
+        /* YourComponentName.css */
 
-{/* <button onClick={e=>dispatch(fetchCompanies())}>click</button> */}
-        <div className="button-container">{renderedButtons}</div>
+        .YourComponentName {
+          font-family: 'Arial', sans-serif;
+          padding: 20px;
+        }
+
+        .form {
+          margin-top: 20px;
+        }
+
+        .input-field {
+          margin-bottom: 15px;
+        }
+
+        .datatable {
+          width: 50%;
+          border-collapse: collapse;
+          margin-top: 20px;
+        }
+
+        .datatable th, .datatable td {
+          border: 1px solid #ddd;
+          padding: 8px;
+          text-align: left;
+        }
+
+        .datatable th {
+          background-color: #f2f2f2;
+        }
+
+        .odd_col {
+          background-color: #f9f9f9;
+        }
+
+        .even_col {
+          background-color: #e6e6e6;
+        }
+      `}</style>
+      {/* Include your styles and sidepanel component here */}
+      <h1>Maintain Table T162: Fields for field Selection Group</h1>
+
+     
+
+      <div id="body">
+        <table className="datatable">
+          <thead>
+            <tr>
+              <th>Field Label</th>
+              <th>
+                Reqd.entry
+                <input
+                  id="check_all1"
+                  type="checkbox"
+                  checked={selectAllReqd}
+                  onChange={handleCheckAllReqd}
+                />
+              </th>
+              <th>
+                Opt.entry
+                <input
+                  id="check_all2"
+                  type="checkbox"
+                  checked={selectAllOpt}
+                  onChange={handleCheckAllOpt}
+                />
+              </th>
+              <th>
+                Display
+                <input
+                  id="check_all3"
+                  type="checkbox"
+                  checked={selectAllDisplay}
+                  onChange={handleCheckAllDisplay}
+                />
+              </th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr className="odd_col">
+              <td>Plant</td>
+              <td>
+                <input
+                  type="checkbox"
+                  name="row-check"
+                  value="1"
+                  className="Reqdentry-checkbox"
+                  checked={selectAllReqd}
+                  onChange={handleRowCheck}
+                />
+              </td>
+              <td>
+                <input
+                  type="checkbox"
+                  name="row-check"
+                  value="1"
+                  className="Optentry-checkbox"
+                  checked={selectAllOpt}
+                  onChange={handleRowCheck}
+                />
+              </td>
+              <td>
+                <input
+                  type="checkbox"
+                  name="row-check"
+                  value="1"
+                  className="Display-checkbox"
+                  checked={selectAllDisplay}
+                  onChange={handleRowCheck}
+                />
+              </td>
+            </tr>
+            <tr className="even_col">
+              <td>Item category</td>
+              <td>
+                <input
+                  type="checkbox"
+                  name="row-check"
+                  value="2"
+                  className="Reqdentry-checkbox"
+                  checked={selectAllReqd}
+                  onChange={handleRowCheck}
+                />
+              </td>
+              <td>
+                <input
+                  type="checkbox"
+                  name="row-check"
+                  value="2"
+                  className="Optentry-checkbox"
+                  checked={selectAllOpt}
+                  onChange={handleRowCheck}
+                />
+              </td>
+              <td>
+                <input
+                  type="checkbox"
+                  name="row-check"
+                  value="2"
+                  className="Display-checkbox"
+                  checked={selectAllDisplay}
+                  onChange={handleRowCheck}
+                />
+              </td>
+            </tr>
+            {/* Add more rows as needed */}
+            <tr className="odd_col">
+              <td>Storage Location</td>
+              <td>
+                <input
+                  type="checkbox"
+                  name="row-check"
+                  value="3"
+                  className="Reqdentry-checkbox"
+                  checked={selectAllReqd}
+                  onChange={handleRowCheck}
+                />
+              </td>
+              <td>
+                <input
+                  type="checkbox"
+                  name="row-check"
+                  value="3"
+                  className="Optentry-checkbox"
+                  checked={selectAllOpt}
+                  onChange={handleRowCheck}
+                />
+              </td>
+              <td>
+                <input
+                  type="checkbox"
+                  name="row-check"
+                  value="3"
+                  className="Display-checkbox"
+                  checked={selectAllDisplay}
+                  onChange={handleRowCheck}
+                />
+              </td>
+            </tr>
+            <tr className="even_col">
+              <td>Account assignment category</td>
+              <td>
+                <input
+                  type="checkbox"
+                  name="row-check"
+                  value="4"
+                  className="Reqdentry-checkbox"
+                  checked={selectAllReqd}
+                  onChange={handleRowCheck}
+                />
+              </td>
+              <td>
+                <input
+                  type="checkbox"
+                  name="row-check"
+                  value="4"
+                  className="Optentry-checkbox"
+                  checked={selectAllOpt}
+                  onChange={handleRowCheck}
+                />
+              </td>
+              <td>
+                <input
+                  type="checkbox"
+                  name="row-check"
+                  value="4"
+                  className="Display-checkbox"
+                  checked={selectAllDisplay}
+                  onChange={handleRowCheck}
+                />
+              </td>
+            </tr>
+            <tr className="odd_col">
+              <td>Indicator: "Texts exist"</td>
+              <td>
+                <input
+                  type="checkbox"
+                  name="row-check"
+                  value="5"
+                  className="Reqdentry-checkbox"
+                  checked={selectAllReqd}
+                  onChange={handleRowCheck}
+                />
+              </td>
+              <td>
+                <input
+                  type="checkbox"
+                  name="row-check"
+                  value="5"
+                  className="Optentry-checkbox"
+                  checked={selectAllOpt}
+                  onChange={handleRowCheck}
+                />
+              </td>
+              <td>
+                <input
+                  type="checkbox"
+                  name="row-check"
+                  value="5"
+                  className="Display-checkbox"
+                  checked={selectAllDisplay}
+                  onChange={handleRowCheck}
+                />
+              </td>
+            </tr>
+            <tr className="even_col">
+              <td>Purchasing Group</td>
+              <td>
+                <input
+                  type="checkbox"
+                  name="row-check"
+                  value="6"
+                  className="Reqdentry-checkbox"
+                  checked={selectAllReqd}
+                  onChange={handleRowCheck}
+                />
+              </td>
+              <td>
+                <input
+                  type="checkbox"
+                  name="row-check"
+                  value="6"
+                  className="Optentry-checkbox"
+                  checked={selectAllOpt}
+                  onChange={handleRowCheck}
+                />
+              </td>
+              <td>
+                <input
+                  type="checkbox"
+                  name="row-check"
+                  value="6"
+                  className="Display-checkbox"
+                  checked={selectAllDisplay}
+                  onChange={handleRowCheck}
+                />
+              </td>
+            </tr>
+            <tr className="odd_col">
+              <td>Short text</td>
+              <td>
+                <input
+                  type="checkbox"
+                  name="row-check"
+                  value="7"
+                  className="Reqdentry-checkbox"
+                  checked={selectAllReqd}
+                  onChange={handleRowCheck}
+                />
+              </td>
+              <td>
+                <input
+                  type="checkbox"
+                  name="row-check"
+                  value="7"
+                  className="Optentry-checkbox"
+                  checked={selectAllOpt}
+                  onChange={handleRowCheck}
+                />
+              </td>
+              <td>
+                <input
+                  type="checkbox"
+                  name="row-check"
+                  value="7"
+                  className="Display-checkbox"
+                  checked={selectAllDisplay}
+                  onChange={handleRowCheck}
+                />
+              </td>
+            </tr>
+            <tr className="even_col">
+              <td>Material Group</td>
+              <td>
+                <input
+                  type="checkbox"
+                  name="row-check"
+                  value="8"
+                  className="Reqdentry-checkbox"
+                  checked={selectAllReqd}
+                  onChange={handleRowCheck}
+                />
+              </td>
+              <td>
+                <input
+                  type="checkbox"
+                  name="row-check"
+                  value="8"
+                  className="Optentry-checkbox"
+                  checked={selectAllOpt}
+                  onChange={handleRowCheck}
+                />
+              </td>
+              <td>
+                <input
+                  type="checkbox"
+                  name="row-check"
+                  value="8"
+                  className="Display-checkbox"
+                  checked={selectAllDisplay}
+                  onChange={handleRowCheck}
+                />
+              </td>
+            </tr>
+            <tr className="odd_col">
+              <td>Material description</td>
+              <td>
+                <input
+                  type="checkbox"
+                  name="row-check"
+                  value="9"
+                  className="Reqdentry-checkbox"
+                  checked={selectAllReqd}
+                  onChange={handleRowCheck}
+                />
+              </td>
+              <td>
+                <input
+                  type="checkbox"
+                  name="row-check"
+                  value="9"
+                  className="Optentry-checkbox"
+                  checked={selectAllOpt}
+                  onChange={handleRowCheck}
+                />
+              </td>
+              <td>
+                <input
+                  type="checkbox"
+                  name="row-check"
+                  value="9"
+                  className="Display-checkbox"
+                  checked={selectAllDisplay}
+                  onChange={handleRowCheck}
+                />
+              </td>
+            </tr>
+            <tr className="even_col">
+              <td>External service fields</td>
+              <td>
+                <input
+                  type="checkbox"
+                  name="row-check"
+                  value="10"
+                  className="Reqdentry-checkbox"
+                  checked={selectAllReqd}
+                  onChange={handleRowCheck}
+                />
+              </td>
+              <td>
+                <input
+                  type="checkbox"
+                  name="row-check"
+                  value="10"
+                  className="Optentry-checkbox"
+                  checked={selectAllOpt}
+                  onChange={handleRowCheck}
+                />
+              </td>
+              <td>
+                <input
+                  type="checkbox"
+                  name="row-check"
+                  value="10"
+                  className="Display-checkbox"
+                  checked={selectAllDisplay}
+                  onChange={handleRowCheck}
+                />
+              </td>
+            </tr>
+            <tr className="odd_col">
+              <td>Value limit fields</td>
+              <td>
+                <input
+                  type="checkbox"
+                  name="row-check"
+                  value="11"
+                  className="Reqdentry-checkbox"
+                  checked={selectAllReqd}
+                  onChange={handleRowCheck}
+                />
+              </td>
+              <td>
+                <input
+                  type="checkbox"
+                  name="row-check"
+                  value="11"
+                  className="Optentry-checkbox"
+                  checked={selectAllOpt}
+                  onChange={handleRowCheck}
+                />
+              </td>
+              <td>
+                <input
+                  type="checkbox"
+                  name="row-check"
+                  value="11"
+                  className="Display-checkbox"
+                  checked={selectAllDisplay}
+                  onChange={handleRowCheck}
+                />
+              </td>
+            </tr>
+            <tr className="even_col">
+              <td>Manufacturer part number</td>
+              <td>
+                <input
+                  type="checkbox"
+                  name="row-check"
+                  value="12"
+                  className="Reqdentry-checkbox"
+                  checked={selectAllReqd}
+                  onChange={handleRowCheck}
+                />
+              </td>
+              <td>
+                <input
+                  type="checkbox"
+                  name="row-check"
+                  value="12"
+                  className="Optentry-checkbox"
+                  checked={selectAllOpt}
+                  onChange={handleRowCheck}
+                />
+              </td>
+              <td>
+                <input
+                  type="checkbox"
+                  name="row-check"
+                  value="12"
+                  className="Display-checkbox"
+                  checked={selectAllDisplay}
+                  onChange={handleRowCheck}
+                />
+              </td>
+            </tr>
+            <tr className="odd_col">
+              <td>Requirement Urgency</td>
+              <td>
+                <input
+                  type="checkbox"
+                  name="row-check"
+                  value="13"
+                  className="Reqdentry-checkbox"
+                  checked={selectAllReqd}
+                  onChange={handleRowCheck}
+                />
+              </td>
+              <td>
+                <input
+                  type="checkbox"
+                  name="row-check"
+                  value="13"
+                  className="Optentry-checkbox"
+                  checked={selectAllOpt}
+                  onChange={handleRowCheck}
+                />
+              </td>
+              <td>
+                <input
+                  type="checkbox"
+                  name="row-check"
+                  value="13"
+                  className="Display-checkbox"
+                  checked={selectAllDisplay}
+                  onChange={handleRowCheck}
+                />
+              </td>
+            </tr>
+          </tbody>
+        </table>
       </div>
+
+      {/* Include your script tag here */}
     </div>
   );
-};
-
-
-
-
-
-const CreditControlComponent = ({page}) => {
-  const [v, sv]= useState(null);
-  const [id, sid] = useState(null);
-  const state= useSelector((state)=>state)
-  const getV =(value)=>{
-    sv((v)=> value);
-  }
-  const getId = (value) => {
-    sid((id) => value);
-  };
-  const initialValues = {
-    "Credit Control Area": '',
-    "Currency": '',
-    "Update": '',
-    "Rep group": '',
-    "Fy Variant": '',
-    "Risk Category": '',
-    "Credit Limit": '',
-  
-    "All coCodes": '', // Added field
-  };
-   
-  return (
-<div className='define-container'>
-<ControlBar getV={getV} controls={page} /> 
-   { (v)?<h1>{v}</h1>: null}
-    <Form initialValues={initialValues} id={page._id} />
-    <div className="mt-4">
-        <DefineTable id={page._id} getId={getId} />
-        { (id)?<h1>{id}</h1>: <h1>noid</h1>} 
-      </div>
-    </div>
-  )
 }
 
-export default CreditControlComponent
+export default YourComponentName;
